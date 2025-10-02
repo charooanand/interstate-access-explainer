@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>index</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-985aa47af68dae11cd4d235c71fb941e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-991b1886d3c685c7aa2b62b80640c7af.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="_extensions/qmd-lab/closeread/closeread.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul>
+  <li><a href="#raw-data-employment-growth-regression" id="toc-raw-data-employment-growth-regression" class="nav-link active" data-scroll-target="#raw-data-employment-growth-regression">Raw Data &amp; Employment Growth Regression</a></li>
+  <li><a href="#construction-of-instrument" id="toc-construction-of-instrument" class="nav-link" data-scroll-target="#construction-of-instrument">Construction of Instrument</a></li>
+  <li><a href="#validity-of-instrument" id="toc-validity-of-instrument" class="nav-link" data-scroll-target="#validity-of-instrument">Validity of Instrument</a></li>
+  <li><a href="#iv-estimates-of-the-employment-growth-regression" id="toc-iv-estimates-of-the-employment-growth-regression" class="nav-link" data-scroll-target="#iv-estimates-of-the-employment-growth-regression">IV Estimates of the Employment Growth Regression</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+      <!-- user-provided yaml closeread style options -->
+      <style>
+        :root {
+          --cr-narrative-outer-margin: 25%;
+--cr-narrative-border-radius: 5px;
+--cr-narrative-background-color-overlay: #fcfcfc;
+--cr-section-background-color: white;
+--cr-narrative-overlay-max-width: 30%;
+--cr-narrative-text-color-overlay: black;
+        }
+      </style>
+    
+
+
+
+
+<section id="interstate-access-employment-growth-evidence-from-a-design-based-instrument" class="level2 intro-center">
+<h2 class="anchored" data-anchor-id="interstate-access-employment-growth-evidence-from-a-design-based-instrument">Interstate Access &amp; Employment Growth: <br> Evidence from a Design-Based Instrument</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>The <strong>Federal-Aid Highway Act of 1956</strong> created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.</p>
+<p>I set out to identify and estimate the causal effect of Interstate access on county employment growth. The challenge, of course, is that highways weren’t placed at random. Because highways are routed to connect productive and growing hubs, simple correlations reflect selection bias.</p>
+<p>This project introduces a new design to identify the causal effect of Interstate access on counties’ long-run employment growth.</p>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<p><br></p>
+<div class="quarto-figure quarto-figure-center" style="float: right; margin-left: 5em; width:100%">
+<figure class="figure">
+<p><img src="images/Alaskan-Way-Viaduct-Seattle-1967.jpg" class="img-fluid figure-img"></p>
+<figcaption>Seattle, 1967</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="raw-data-employment-growth-regression" class="level1">
+<h1>Raw Data &amp; Employment Growth Regression</h1>
+<section id="raw-employment-growth-data" class="level3">
+<h3 class="anchored" data-anchor-id="raw-employment-growth-data">Raw Employment Growth Data</h3>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-fullSampleEmpLevels">
+<div class="narrative">
+<p>In recent work, Dustin Frye assembles a new and wonderfully frequent county-level employment panel, which is invaluable for this research. He creates this panel by compiling data from the Census Bureau’s County Business Patterns (CBP) across three different sources. The marker shape denotes the CBP source. Data points denoted by × are hand-collected from archives, ● are from ICPSR and ○ are from data published by the US Census Bureau.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-splitEmpLevels">
+<div class="narrative">
+<p>To examine the relationship between employment growth and Interstate access, I split counties into two groups; treatment and control. I classify counties within 25km of an Interstate highway as the <em>treatment group</em> and the remainder constitute the <em>control group</em>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-splitEmpLevels">
+<div class="narrative">
+<p>It looks like most employment growth during the last century was concentrated in the treatment counties. Counties that gained Interstate access experienced exponential-looking employment growth. However, consistent with concerns of selection bias, these counties began with higher baseline employment and were possibly already growing faster.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-splitEmpLevels">
+<div class="narrative">
+<p>Before thinking about the causal effect of Interstate access, I specify a regression model to capture the divergence between treatment and control counties. In the analysis that follows, I exclude the early outliers from decennial years, which appear inconsistent with other sources.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-fullSampleEmpLevels" class="sticky">
+<p><img src="images/rawGrowthRates/fullSampleEmpLevels.jpeg" class="img-fluid" style="padding:5px; margin-left: 40px;;width:40.0%"> <img src="images/rawGrowthRates/blankLegendSpace.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-splitEmpLevels" class="sticky">
+<p><img src="images/rawGrowthRates/empLevels.jpeg" class="img-fluid" style="padding:5px; margin-left: 40px;;width:40.0%"> <img src="images/rawGrowthRates/levelsLegend.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="baseline-employment-growth-regression-model" class="level3">
+<h3 class="anchored" data-anchor-id="baseline-employment-growth-regression-model">Baseline Employment Growth Regression Model</h3>
+<p><br></p>
+<p>To flexibly capture dynamic effects while preserving statistical power, I group years into 4-year periods, <span class="math inline">\(\tau \in \{1970\text{-}1974,\,1975\text{-}1979,\,\dots,\,2010\text{-}2014\}\)</span>. For each period <span class="math inline">\(\tau\)</span>, I estimate the following specification, with counties indexed by <span class="math inline">\(c\)</span>:</p>
+<div style="font-size: 1.25em;">
+<p><span class="math display">\[
+\log(Y_{c, t}) - \log(Y_{c,1953})
+= \beta_{0,\tau} + \beta_{1,\tau}\,\text{Treatment}_{c}
++ X_{c}\gamma_{\tau} + \delta_{t} + \varepsilon_{c, t}
+\]</span></p>
+</div>
+<p>The dependent variable is the log change in employment in county <span class="math inline">\(c\)</span> since 1953. The coefficient <span class="math inline">\(\beta_{1,\tau}\)</span> measures the relationship between Interstate access and post-construction employment growth at period <span class="math inline">\(\tau\)</span>. The indicator <span class="math inline">\(\text{Treatment}_{c}\)</span> equals one if county <span class="math inline">\(c\)</span> was within 25km of an Interstate highway. The vector <span class="math inline">\(X_{c}\)</span> includes baseline county characteristics measured prior to Interstate construction, and <span class="math inline">\(\delta_{t}\)</span> denotes year fixed effects.</p>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-ols">
+<div class="narrative">
+<p>The table reports the OLS estimates of <span class="math inline">\(\beta_{1,\tau}\)</span>. The pattern of results is unsurprising given the raw data; the estimates are statistically significant and grow in magnitude over time.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ols">
+<div class="narrative">
+<p>Because the dependent variable is a log difference, the coefficient <span class="math inline">\(\beta_{1,\tau}\)</span> can be interpreted as the percentage difference in cumulative employment growth between treatment and control counties from 1953 to time period <span class="math inline">\(\tau\)</span>. In particular, a coefficient <span class="math inline">\(\hat\beta_{1,\tau}\)</span> implies that treatment counties experienced <span class="math inline">\((e^{\hat\beta_{1,\tau}} - 1) \times 100\)</span> percent higher growth relative to controls. For small coefficients, the approximation <span class="math inline">\(\hat\beta_{1,\tau} \times 100\)</span> is accurate; for example, <span class="math inline">\(\hat\beta_{1,\tau} = 0.33\)</span> corresponds to about 39 percent higher cumulative growth.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-ols" class="sticky" style="width:35%; margin-left:5%; margin-right:auto; font-size:0.9em;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Time Period</th>
+<th>Coefficient Estimate</th>
+<th>Standard Error</th>
+<th>P-Val</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1970–1974</td>
+<td>0.073</td>
+<td>0.023</td>
+<td>0.0014</td>
+</tr>
+<tr class="even">
+<td>1975–1979</td>
+<td>0.100</td>
+<td>0.026</td>
+<td>0.0001</td>
+</tr>
+<tr class="odd">
+<td>1980–1984</td>
+<td>0.128</td>
+<td>0.030</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<td>1985–1989</td>
+<td>0.172</td>
+<td>0.036</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td>1990–1994</td>
+<td>0.195</td>
+<td>0.039</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<td>1995–1999</td>
+<td>0.229</td>
+<td>0.043</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td>2000–2004</td>
+<td>0.274</td>
+<td>0.047</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<td>2005–2009</td>
+<td>0.307</td>
+<td>0.049</td>
+<td>0.0000</td>
+</tr>
+<tr class="odd">
+<td>2010–2014</td>
+<td>0.326</td>
+<td>0.049</td>
+<td>0.0000</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: Conley standard errors with a 100km cutoff. N = 13,845.</em></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="construction-of-instrument" class="level1">
+<h1>Construction of Instrument</h1>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-ike">
+<div class="narrative">
+<p>Due to selection bias, OLS estimates of <span class="math inline">\(\beta_{1, \tau}\)</span> might differ from the causal effect on Interstate access. To address this bias, I find an <em>instrumental variable</em> (IV) for <span class="math inline">\(\text{Treatment}_{c}\)</span>. In other words, I construct a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ike">
+<div class="narrative">
+<p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-scale-by="2" data-pan-to="0%,-30%" data-focus-on="cr-ike">
+<div class="narrative">
+<p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-ike" class="sticky">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="images/ikeSigning.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<section id="an-exogenous-planning-shock" class="level3">
+<h3 class="anchored" data-anchor-id="an-exogenous-planning-shock">An exogenous planning shock?</h3>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-planningdocs">
+<div class="narrative">
+<p>These are excerpts from the 1944 report of the National Interregional Highway Committee, which outlined a plan for the future Interstate system. The section entitled <em>Determinants of Selection</em> describes that, in effect, planners picked dense, productive hubs and drew routes to connect them. Emphasis on the word <em>Selection</em>! Counties that gained Interstate access were either large and growing or happened to lie along these corridors, making treatment counties systematically different from those left out.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-planningdocs">
+<div class="narrative">
+<p>However, the map hints at an arbitrary planning shock. Planners appear to have grouped cities by their 1940 population when drawing networks, and the final plan emphasized connecting cities with populations above 50,000.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-planningdocs" class="sticky">
+<p><img src="images/report/determinantsOfSelection.png" class="img-fluid" style="border:2px solid #444; padding:5px; margin-left: 40px;;width:40.0%"></p>
+<p><img src="images/report/recommendedSystemMap.png" class="img-fluid" style="margin-left: 40px;width:40.0%"></p>
+<p><img src="images/report/anyEffort.png" class="img-fluid" style="border:2px solid #444; padding:5px; margin-left: 40px;;width:40.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="testing-for-a-discontinuity" class="level3">
+<h3 class="anchored" data-anchor-id="testing-for-a-discontinuity">Testing for a Discontinuity</h3>
+<p><br></p>
+<p>I overlay 1940 counties with the Interstate system and, by bins of log 1940 population, compute the share of counties intersected by a highway. The probability of receiving an Interstate jumps by about 20 percentage points at the 50,000 population cutoff.</p>
+<p>Additionally, other county characteristics and the density of counties remain smooth at this cutoff, which suggests that this is a natural experiment. Near the cutoff, there is a set of counties that shared similar potential outcomes, on average. However, for a random reason, only some of them gained Interstate access.</p>
+<p>This looks like a promising fuzzy RD design but, because it uses only counties near the cutoff, estimates are too underpowered to learn anything. So, what <em>can</em> we learn from this natural experiment?</p>
+<div class="columns center-cols">
+<div class="column" style="width:40%;">
+<p><img src="images/rdd/connectedFull.jpeg" class="img-fluid"></p>
+</div><div class="column" style="width:40%;">
+<p><img src="images/rdd/density.jpeg" class="img-fluid"></p>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="there-is-a-lot-of-non-random-exposure-to-this-exogenous-shock" class="level3 info-block">
+<h3 class="anchored" data-anchor-id="there-is-a-lot-of-non-random-exposure-to-this-exogenous-shock">💡 There is a lot of non-random exposure to this exogenous shock</h3>
+<p>For many counties, their distance to an Interstate depends partly on the exogenous inclusion of a near-cutoff population hubs to the Interstate network. In this spatial setting, the random inclusion of a county generates treatment variation in other counties that must be traversed to connect it to the network.</p>
+<p>But exposure to this source of variation is itself non-random. The instrument I construct builds on this insight: it captures the induced treatment variation and, following Borusyak and Hull (2023), I apply their recentering procedure to isolate the random component.</p>
+</section>
+<p><br></p>
+<section id="stylized-example" class="level3">
+<h3 class="anchored" data-anchor-id="stylized-example">Stylized Example</h3>
+<p>A visualization of a stylized example will help.</p>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-blankNodes">
+<div class="narrative">
+<p>Here are five major population hubs. Three of them, shown in blue, are clearly above the cutoff. The two others, shown in red, have populations close to 50,000.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-blankNodes">
+<div class="narrative">
+<p>Imagine a sharp RD: every hub with a population above 50,000 is targeted by planners, and none below that threshold are included. For the red hubs, inclusion is essentially a coin flip: if they have 49,000 residents, they are excluded; if 51,000, they are included.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-network1">
+<div class="narrative">
+<p>After seeing the populations of the red hubs, planners build this network to efficiently connect hubs. Consequently, the grey counties are treated.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-network1">
+<div class="narrative">
+<p>Despite the randomness, comparisons of treated and control counties remain confounded by selection. Counties near large, productive hubs - or lying on the corridors between them - benefit from those locations regardless of highways. Also, centrally located counties are always more likely to be traversed, but also gain from centrality alone.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-counterfactuals">
+<div class="narrative">
+<p>I simulate the four counterfactual networks that could have been built, given the possible connection status of the two coin-flip red hubs.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-expectedTreatment">
+<div class="narrative">
+<p>Then, to summarize the non-random component of the treatment variation driven by the cutoff, I calculate counties’ expected treatment across these counterfactuals.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-blankNodes" class="sticky">
+<p><img src="images/ivFigs/blankNodes.png" class="img-fluid" style="float:left; margin-right:2em; margin-left:0;;width:40.0%"></p>
+</div>
+<div id="cr-network1" class="sticky">
+<p><img src="images/ivFigs/network1.png" class="img-fluid" style="float:left; margin-right:2em; margin-left:0;;width:40.0%"></p>
+</div>
+<div id="cr-counterfactuals" class="sticky">
+<p><img src="images/ivFigs/simulatedNetworks.gif" class="img-fluid" style="float:left; margin-right:2em; margin-left:0;;width:40.0%"></p>
+</div>
+<div id="cr-expectedTreatment" class="sticky">
+<p><img src="images/ivFigs/ETreatment.png" class="img-fluid" style="float:left; margin-right:2em; margin-left:0;;width:40.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-does-this-work" class="level3 info-block">
+<h3 class="anchored" data-anchor-id="why-does-this-work">❔ Why does this work?</h3>
+<p>The actual treatment combines random variation (from the cutoff-driven coin flips) and systematic variation (from planning priorities). By subtracting the expected treatment from the actual treatment, we get a ‘recentered treatment’ that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.</p>
+<p>Concretely, counties with a positive recentered treatment got a highway <em>only</em> because they happened to be en route to a randomly included hub. Counties with a negative recentered treatment were missed, even though they could have been traversed in plausible counterfactual networks. That is good quasi-experimental identifying variation!</p>
+</section>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><img src="images/ivFigs/actualTreatment.png" class="img-fluid"></p>
+</div><div class="column text-center" style="width:10%;">
+<p><br><br><br><br><br> <span class="math display">\[\Huge \mathbf{-}\]</span></p>
+</div><div class="column" style="width:25%;">
+<p><img src="images/ivFigs/ETreatment.png" class="img-fluid"></p>
+</div><div class="column text-center" style="width:10%;">
+<p><br><br><br><br><br> <span class="math display">\[\Huge \mathbf{=}\]</span> <br><br><br><br></p>
+</div><div class="column" style="width:25%;">
+<p><img src="images/ivFigs/RecenteredTreatment.png" class="img-fluid"></p>
+</div>
+</div>
+<p><br></p>
+<section id="constructing-a-recentered-instrument-for-us-counties" class="level3">
+<h3 class="anchored" data-anchor-id="constructing-a-recentered-instrument-for-us-counties">Constructing a Recentered Instrument for US Counties</h3>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-basemap">
+<div class="narrative">
+<p>I extend this idea to construct a recentered instrument for <span class="math inline">\(Treatment_c\)</span>, the indicator for a county being within 25km of an Interstate highway.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-compliersAndAlwaysTakersMap">
+<div class="narrative">
+<p>The discontintuity implied a natural experiment; there was a set of counties near the cutoff that were plausibly randomly targeted by Interstate planners. To predict which counties these were, I estimate a probability model that incorporates other planning considerations - such as elevation, surface water, and military/manufacturing importance. The map shows the results of this prediction. Near-cutoff ‘coin-flip’ counties are in red and above-cutoff counties that would have been targeted regardless are blue.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ivBetaSkeleton">
+<div class="narrative">
+<p>I select red counties that did in fact have populations above 50,000 and draw a straight-line network to connect them. Specifically, I use a proximity graph to predict an engineer’s optimal network.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-unadjustedIV">
+<div class="narrative">
+<p>Analogous to the <em>actual treatment</em> stylized example, an <span class="math inline">\(UnadjustedIV_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of <span class="math inline">\(Treatment_c\)</span>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-counterfactualBetaSkeletons">
+<div class="narrative">
+<p>Then, by permuting which red counties get targetted, I simulate 50 predicted counterfactual networks.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-expectedIV">
+<div class="narrative">
+<p>The share of predicted counterfactual networks that lie within 25km of a county is the expected instrument.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-recenteredIV">
+<div class="narrative">
+<p>And subtracting the expected instrument from the unadjusted instruments produces a recentered instrument.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-recenteredIV">
+<div class="narrative">
+<p>It was a lot of work to get here and the <em>correct</em> modelling choices are not obvious. But, ultimately, the recentered instrument is only useful if it satisfies the statistical properties of a valid instrumental variable. Recall the (testable) goal of constructing a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-basemap" class="sticky">
+<p><img src="images/usFigs/basemap.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-compliersAndAlwaysTakersMap" class="sticky">
+<p><img src="images/usFigs/compliersAndAlwaysTakersMap.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-ivBetaSkeleton" class="sticky">
+<p><img src="images/usFigs/ivBetaSkeleton.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-counterfactualBetaSkeletons" class="sticky">
+<p><img src="images/usFigs/allCounterfactualSimulations.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-unadjustedIV" class="sticky">
+<p><img src="images/usFigs/iv_25km.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-expectedIV" class="sticky">
+<p><img src="images/usFigs/eIV_25km.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-recenteredIV" class="sticky">
+<p><img src="images/usFigs/rIV_25km.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="validity-of-instrument" class="level1">
+<h1>Validity of Instrument</h1>
+<section id="first-stage-regression" class="level3">
+<h3 class="anchored" data-anchor-id="first-stage-regression">First Stage Regression</h3>
+<p>I run the following regression for with the unadjusted and recentered instruments on the right-hand side. <span class="math display">\[ \large
+\text{Treatment}_{c}
+= \pi_{0} + \pi_{1}\text{Instrument}_{c}
++ X_{c}\pi_2 + \varepsilon_{c}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/firstStage/firstStage.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Column (1) shows that counties with <span class="math inline">\(\text{UnadjustedIV}_{c} = 1\)</span> are 35 percent more likely to gain Interstate access. The <span class="math inline">\(R^2\)</span> of 0.12 indicates that the unadjusted instrument explains a meaningful share of treatment status.</p>
+<p>Column (3) shows that counties with <span class="math inline">\(\text{RecenteredIV}_{c} = 1\)</span> are 19 percent more likely to gain access. Focusing only on plausibly exogenous deviations explains about 1.3 percent of the variation in access, yielding an <span class="math inline">\(F\)</span>-statistic of 37. While the predictive power is limited, this is expected in a design that strips away systematic exposure. Unlike natural experiments that rely on assumptions about counterfactual outcomes, this strategy relies on assumptions about shock assignment. The weak first stage reflects the fact that little in the actual construction process was random—a feature that, if anything, is reassuring.</p>
+</section>
+<section id="testing-the-exclusion-restriction" class="level3">
+<h3 class="anchored" data-anchor-id="testing-the-exclusion-restriction">Testing the exclusion restriction</h3>
+<p>To interrogate the exclusion restriction, I test for correlatedness between <span class="math inline">\(\text{RecenteredIV}_{c}\)</span> and counties’ pre-Interstate employment growth, pre-Interstate characteristics, and latitude and longitude.</p>
+<p>You can see these regression tables here:</p>
+<ul>
+<li><p><a href="preEmpTrend.html">Recentered IV does not predict counties pre-Interstate employment growth</a></p></li>
+<li><p><a href="preInterstateChars.html">Recentered IV does not predict other pre-Interstate county characteristics</a></p></li>
+<li><p><a href="econGeog.html">Recentered IV is uncorrelated with latitude and longitude</a></p></li>
+</ul>
+</section>
+</section>
+<section id="iv-estimates-of-the-employment-growth-regression" class="level1">
+<h1>IV Estimates of the Employment Growth Regression</h1>
+<p>Let’s now revisit our regression model, using the recentered instrument to instrument for <span class="math inline">\(Treatment_{c}\)</span></p>
+<div style="font-size: 1.25em;">
+<p><span class="math display">\[
+\log(Y_{c, t}) - \log(Y_{c,1953})
+= \beta_{0,\tau} + \beta_{1,\tau}\,\text{Treatment}_{c}
++ X_{c}\gamma_{\tau} + \delta_{t} + \varepsilon_{c, t}
+\]</span></p>
+<p><img src="images/coefplots/pooled/empFull.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: ""
+  #site-url: https://charooanand.github.io/interstateAccessDesignExplainer/
+
+format:
+  closeread-html:
+    css: style.css
+    toc: true
+    toc-depth: 1
+    toc-location: right
+    toc-title: "Sections"
+    cr-style:
+      section-background-color: "white"
+      narrative-background-color-overlay: "#fcfcfc"
+      narrative-text-color-overlay: "black"
+      narrative-border-radius: 5px
+      narrative-overlay-max-width: 30%
+      narrative-outer-margin: 25%

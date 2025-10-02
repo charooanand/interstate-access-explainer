@@ -1,0 +1,359 @@
+
+
+::: {.intro-center}
+## Interstate Access & Employment Growth: <br> Evidence from a Design-Based Instrument
+
+<br>
+
+::::: columns
+::: {.column width="45%"}
+
+The **Federal-Aid Highway Act of 1956** created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.
+
+I set out to identify and estimate the causal effect of Interstate access on county employment growth. The challenge, of course, is that highways weren’t placed at random. Because highways are routed to connect productive and growing hubs, simple correlations reflect selection bias.
+
+This project introduces a new design to identify the causal effect of Interstate access on counties' long-run employment growth.
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="45%"}
+<br>
+
+![Seattle, 1967](images/Alaskan-Way-Viaduct-Seattle-1967.jpg){style="float: right; margin-left: 5em; width:100%"}
+:::
+:::::
+
+
+:::
+
+
+
+# Raw Data & Employment Growth Regression
+
+### Raw Employment Growth Data
+
+:::: {.cr-section layout="overlay-right"}
+In recent work, Dustin Frye assembles a new and wonderfully frequent county-level employment panel, which is invaluable for this research. He creates this panel by compiling data from the Census Bureau's County Business Patterns (CBP) across three different sources. The marker shape denotes the CBP source. Data points denoted by &times; are hand-collected from archives, &#9679; are from ICPSR and &#9675; are from data published by the US Census Bureau. [@cr-fullSampleEmpLevels]
+
+
+
+To examine the relationship between employment growth and Interstate access, I split counties into two groups; treatment and control. I classify counties within 25km of an Interstate highway as the *treatment group* and the remainder constitute the *control group*. [@cr-splitEmpLevels]
+
+
+It looks like most employment growth during the last century was concentrated in the treatment counties. Counties that gained Interstate access experienced exponential-looking employment growth. However, consistent with concerns of selection bias, these counties began with higher baseline employment and were possibly already growing faster. [@cr-splitEmpLevels]
+
+Before thinking about the causal effect of Interstate access, I specify a regression model to capture the divergence between treatment and control counties. In the analysis that follows, I exclude the early outliers from decennial years, which appear inconsistent with other sources. [@cr-splitEmpLevels]
+
+::: {#cr-fullSampleEmpLevels}
+![](images/rawGrowthRates/fullSampleEmpLevels.jpeg){width="40%" style="padding:5px; margin-left: 40px;"}
+![](images/rawGrowthRates/blankLegendSpace.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-splitEmpLevels}
+![](images/rawGrowthRates/empLevels.jpeg){width="40%" style="padding:5px; margin-left: 40px;"}
+![](images/rawGrowthRates/levelsLegend.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+::::
+
+### Baseline Employment Growth Regression Model
+
+<br>
+
+To flexibly capture dynamic effects while preserving statistical power, I group years into 4-year periods, $\tau \in \{1970\text{-}1974,\,1975\text{-}1979,\,\dots,\,2010\text{-}2014\}$. For each period $\tau$, I estimate the following specification, with counties indexed by $c$:
+
+::: {style="font-size: 1.25em;"}
+$$
+\log(Y_{c, t}) - \log(Y_{c,1953}) 
+= \beta_{0,\tau} + \beta_{1,\tau}\,\text{Treatment}_{c} 
++ X_{c}\gamma_{\tau} + \delta_{t} + \varepsilon_{c, t}
+$$
+:::
+
+The dependent variable is the log change in employment in county $c$ since 1953. The coefficient $\beta_{1,\tau}$ measures the relationship between Interstate access and post-construction employment growth at period $\tau$. The indicator $\text{Treatment}_{c}$ equals one if county $c$ was within 25km of an Interstate highway. The vector $X_{c}$ includes baseline county characteristics measured prior to Interstate construction, and $\delta_{t}$ denotes year fixed effects.
+
+:::: {.cr-section layout="overlay-right"}
+The table reports the OLS estimates of $\beta_{1,\tau}$. The pattern of results is unsurprising given the raw data; the estimates are statistically significant and grow in magnitude over time. @cr-ols
+
+Because the dependent variable is a log difference, the coefficient $\beta_{1,\tau}$ can be interpreted as the percentage difference in cumulative employment growth between treatment and control counties from 1953 to time period $\tau$. In particular, a coefficient $\hat\beta_{1,\tau}$ implies that treatment counties experienced $(e^{\hat\beta_{1,\tau}} - 1) \times 100$ percent higher growth relative to controls. For small coefficients, the approximation $\hat\beta_{1,\tau} \times 100$ is accurate; for example, $\hat\beta_{1,\tau} = 0.33$ corresponds to about 39 percent higher cumulative growth. @cr-ols
+
+
+
+::: {#cr-ols style="width:35%; margin-left:5%; margin-right:auto; font-size:0.9em;"}
+| Time Period | Coefficient Estimate | Standard Error | P-Val  |
+|-------------|----------------------|----------------|--------|
+| 1970–1974   | 0.073                | 0.023          | 0.0014 |
+| 1975–1979   | 0.100                | 0.026          | 0.0001 |
+| 1980–1984   | 0.128                | 0.030          | 0.0000 |
+| 1985–1989   | 0.172                | 0.036          | 0.0000 |
+| 1990–1994   | 0.195                | 0.039          | 0.0000 |
+| 1995–1999   | 0.229                | 0.043          | 0.0000 |
+| 2000–2004   | 0.274                | 0.047          | 0.0000 |
+| 2005–2009   | 0.307                | 0.049          | 0.0000 |
+| 2010–2014   | 0.326                | 0.049          | 0.0000 |
+
+*Note: Conley standard errors with a 100km cutoff. N = 13,845.*
+:::
+
+::::
+
+
+# Construction of Instrument
+
+
+:::: {.cr-section layout="overlay-right"}
+Due to selection bias, OLS estimates of $\beta_{1, \tau}$ might differ from the causal effect on Interstate access. To address this bias, I find an *instrumental variable* (IV) for $\text{Treatment}_{c}$. In other words, I construct a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth. [@cr-ike]
+
+To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes. [@cr-ike]
+
+So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth? [@cr-ike]{pan-to="0%,-30%" scale-by="2"}
+
+::: {#cr-ike}
+![](images/ikeSigning.jpg){width="70%" fig-align="left"}
+:::
+::::
+
+<br>
+
+### An exogenous planning shock?
+
+:::: {.cr-section layout="overlay-right"}
+
+These are excerpts from the 1944 report of the National Interregional Highway Committee, which outlined a plan for the future Interstate system. The section entitled *Determinants of Selection* describes that, in effect, planners picked dense, productive hubs and drew routes to connect them. Emphasis on the word *Selection*! Counties that gained Interstate access were either large and growing or happened to lie along these corridors, making treatment counties systematically different from those left out. [@cr-planningdocs]
+
+However, the map hints at an arbitrary planning shock. Planners appear to have grouped cities by their 1940 population when drawing networks, and the final plan emphasized connecting cities with populations above 50,000. [@cr-planningdocs]
+
+::: {#cr-planningdocs}
+![](images/report/determinantsOfSelection.png){width="40%" style="border:2px solid #444; padding:5px; margin-left: 40px;"}
+
+![](images/report/recommendedSystemMap.png){width="40%" style="margin-left: 40px"}
+
+![](images/report/anyEffort.png){width="40%" style="border:2px solid #444; padding:5px; margin-left: 40px;"}
+:::
+::::
+
+
+### Testing for a Discontinuity
+
+<br>
+
+I overlay 1940 counties with the Interstate system and, by bins of log 1940 population, compute the share of counties intersected by a highway. The probability of receiving an Interstate jumps by about 20 percentage points at the 50,000 population cutoff.
+
+Additionally, other county characteristics and the density of counties remain smooth at this cutoff, which suggests that this is a natural experiment. Near the cutoff, there is a set of counties that shared similar potential outcomes, on average. However, for a random reason, only some of them gained Interstate access. 
+
+This looks like a promising fuzzy RD design but, because it uses only counties near the cutoff, estimates are too underpowered to learn anything. So, what _can_ we learn from this natural experiment?
+
+::::: {.columns .center-cols}
+
+::: {.column width="40%"}
+![](images/rdd/connectedFull.jpeg)
+:::
+
+::: {.column width="40%"}
+![](images/rdd/density.jpeg)
+:::
+:::::
+
+<br>
+
+::: {.info-block}
+### &#128161; There is a lot of non-random exposure to this exogenous shock
+
+For many counties, their distance to an Interstate depends partly on the exogenous inclusion of a near-cutoff population hubs to the Interstate network. In this spatial setting, the random inclusion of a county generates treatment variation in other counties that must be traversed to connect it to the network. 
+
+But exposure to this source of variation is itself non-random. The instrument I construct builds on this insight: it captures the induced treatment variation and, following Borusyak and Hull (2023), I apply their recentering procedure to isolate the random component.
+:::
+
+<br>
+
+### Stylized Example
+
+A visualization of a stylized example will help.
+
+:::: {.cr-section layout="overlay-right"}
+
+Here are five major population hubs. Three of them, shown in blue, are clearly above the cutoff. The two others, shown in red, have populations close to 50,000. [@cr-blankNodes]
+
+Imagine a sharp RD: every hub with a population above 50,000 is targeted by planners, and none below that threshold are included. For the red hubs, inclusion is essentially a coin flip: if they have 49,000 residents, they are excluded; if 51,000, they are included. [@cr-blankNodes]
+
+After seeing the populations of the red hubs, planners build this network to efficiently connect hubs. Consequently, the grey counties are treated. [@cr-network1]
+
+Despite the randomness, comparisons of treated and control counties remain confounded by selection. Counties near large, productive hubs - or lying on the corridors between them - benefit from those locations regardless of highways. Also, centrally located counties are always more likely to be traversed, but also gain from centrality alone. [@cr-network1]
+
+I simulate the four counterfactual networks that could have been built, given the possible connection status of the two coin-flip red hubs.  [@cr-counterfactuals]
+
+
+Then, to summarize the non-random component of the treatment variation driven by the cutoff, I calculate counties' expected treatment across these counterfactuals. [@cr-expectedTreatment]
+
+
+::: {#cr-blankNodes}
+![](images/ivFigs/blankNodes.png){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
+
+:::
+
+::: {#cr-network1}
+![](images/ivFigs/network1.png){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
+:::
+
+::: {#cr-counterfactuals}
+![](images/ivFigs/simulatedNetworks.gif){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
+:::
+
+
+::: {#cr-expectedTreatment}
+![](images/ivFigs/ETreatment.png){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
+:::
+
+::::
+
+::: {.info-block}
+### &#10068; Why does this work? 
+
+The actual treatment combines random variation (from the cutoff-driven coin flips) and systematic variation (from planning priorities). By subtracting the expected treatment from the actual treatment, we get a 'recentered treatment' that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.
+
+Concretely, counties with a positive recentered treatment got a highway _only_ because they happened to be en route to a randomly included hub. Counties with a negative recentered treatment were missed, even though they could have been traversed in plausible counterfactual networks. That is good quasi-experimental identifying variation!
+:::
+
+
+
+
+::::: columns
+::: {.column width="25%"}
+![](images/ivFigs/actualTreatment.png)
+:::
+
+::: {.column width="10%" .text-center}
+<br><br><br><br><br>
+$$\Huge \mathbf{-}$$
+:::
+
+::: {.column width="25%"}
+![](images/ivFigs/ETreatment.png)
+:::
+
+::: {.column width="10%" .text-center}
+<br><br><br><br><br>
+$$\Huge \mathbf{=}$$
+<br><br><br><br>
+:::
+
+::: {.column width="25%"}
+![](images/ivFigs/RecenteredTreatment.png)
+:::
+:::::
+
+<br>
+
+
+### Constructing a Recentered Instrument for US Counties
+
+:::: {.cr-section layout="overlay-right"}
+
+I extend this idea to construct a recentered instrument for $Treatment_c$, the indicator for a county being within 25km of an Interstate highway. [@cr-basemap]
+
+The discontintuity implied a natural experiment; there was a set of counties near the cutoff that were plausibly randomly targeted by Interstate planners. To predict which counties these were, I estimate a probability model that incorporates other planning considerations - such as elevation, surface water, and military/manufacturing importance. The map shows the results of this prediction. Near-cutoff 'coin-flip' counties are in red and above-cutoff counties that would have been targeted regardless are blue. [@cr-compliersAndAlwaysTakersMap]
+
+I select red counties that did in fact have populations above 50,000 and draw a straight-line network to connect them. Specifically, I use a proximity graph to predict an engineer's optimal network. [@cr-ivBetaSkeleton]
+
+Analogous to the _actual treatment_ stylized example, an $UnadjustedIV_c$ is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of $Treatment_c$. [@cr-unadjustedIV]
+
+Then, by permuting which red counties get targetted, I simulate 50 predicted counterfactual networks. [@cr-counterfactualBetaSkeletons]
+
+The share of predicted counterfactual networks that lie within 25km of a county is the expected instrument. [@cr-expectedIV]
+
+And subtracting the expected instrument from the unadjusted instruments produces a recentered instrument. [@cr-recenteredIV]
+
+It was a lot of work to get here and the _correct_ modelling choices are not obvious. But, ultimately, the recentered instrument is only useful if it satisfies the statistical properties of a valid instrumental variable. Recall the (testable) goal of constructing a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth. [@cr-recenteredIV]
+
+::: {#cr-basemap}
+![](images/usFigs/basemap.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-compliersAndAlwaysTakersMap}
+![](images/usFigs/compliersAndAlwaysTakersMap.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-ivBetaSkeleton}
+![](images/usFigs/ivBetaSkeleton.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-counterfactualBetaSkeletons}
+![](images/usFigs/allCounterfactualSimulations.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-unadjustedIV}
+![](images/usFigs/iv_25km.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-expectedIV}
+![](images/usFigs/eIV_25km.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-recenteredIV}
+![](images/usFigs/rIV_25km.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+:::::
+
+
+# Validity of Instrument
+
+
+### First Stage Regression
+
+I run the following regression for with the unadjusted and recentered instruments on the right-hand side.
+$$ \large
+\text{Treatment}_{c} 
+= \pi_{0} + \pi_{1}\text{Instrument}_{c} 
++ X_{c}\pi_2 + \varepsilon_{c}
+$$
+
+
+![](images/firstStage/firstStage.png){width="70%" fig-align="center"}
+
+Column (1) shows that counties with $\text{UnadjustedIV}_{c} = 1$ are 35 percent more likely to gain Interstate access. The $R^2$ of 0.12 indicates that the unadjusted instrument explains a meaningful share of treatment status.
+
+Column (3) shows that counties with $\text{RecenteredIV}_{c} = 1$ are 19 percent more likely to gain access. Focusing only on plausibly exogenous deviations explains about 1.3 percent of the variation in access, yielding an $F$-statistic of 37. While the predictive power is limited, this is expected in a design that strips away systematic exposure. Unlike natural experiments that rely on assumptions about counterfactual outcomes, this strategy relies on assumptions about shock assignment. The weak first stage reflects the fact that little in the actual construction process was random—a feature that, if anything, is reassuring.
+
+
+
+
+
+
+
+
+
+
+### Testing the exclusion restriction
+
+To interrogate the exclusion restriction, I test for correlatedness between $\text{RecenteredIV}_{c}$ and counties’ pre-Interstate employment growth, pre-Interstate characteristics, and latitude and longitude.
+
+You can see these regression tables here:
+
+- [Recentered IV does not predict counties pre-Interstate employment growth](preEmpTrend.html)
+
+- [Recentered IV does not predict other pre-Interstate county characteristics](preInterstateChars.html)
+
+- [Recentered IV is uncorrelated with latitude and longitude](econGeog.html)
+
+
+
+
+
+# IV Estimates of the Employment Growth Regression
+
+
+Let's now revisit our regression model, using the recentered instrument to instrument for $Treatment_{c}$
+
+::: {style="font-size: 1.25em;"}
+$$
+\log(Y_{c, t}) - \log(Y_{c,1953}) 
+= \beta_{0,\tau} + \beta_{1,\tau}\,\text{Treatment}_{c} 
++ X_{c}\gamma_{\tau} + \delta_{t} + \varepsilon_{c, t}
+$$
+
+
+![](images/coefplots/pooled/empFull.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::

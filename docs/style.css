@@ -1,0 +1,153 @@
+body, section, header {
+  background-color: white !important;
+}
+
+.page-main {
+  max-width: 90% !important;
+  text-align: justify;
+}
+
+
+#quarto-document-content {
+  font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;
+  font-size: 12pt;
+  text-align: justify;
+  margin-bottom: 20vh;
+  padding-bottom: 10vh;
+  z-index: 1;
+}
+
+#quarto-document-content h1 {
+  font-family: "Roboto Slab", "Cormorant Garamond", "Times New Roman", Times, serif;
+  font-weight: 800;
+  font-size: 2.5em;
+  line-height: 1;
+}
+
+.cr-section {
+  font-family: "Roboto Slab", Georgia, "Times New Roman", Times, serif;
+}
+
+.cr-section.overlay-right .narrative-col .narrative {
+  background-color: #f3f3ee;
+  color: black;
+  font-family: "Barlow Condensed";
+}
+
+
+
+.info-block {
+  background-color: black !important;
+  color: white !important;
+  padding: 1em;
+  border-radius: 6px;
+  margin: 1em 0;
+}
+
+/* Force TOC into the top-right corner of the viewport */
+#TOC {
+  position: fixed;      /* pin to viewport */
+  top: 1em;             /* distance from top */
+  right: 1em;           /* distance from right */
+  width: 240px;         /* set a width so lines wrap nicely */
+  z-index: 1000;        /* keep above content */
+  background-color: #f3f3ee;
+  border: 1px solid #f3f3ee;
+  border-radius: 6px;
+  padding: 0.8em 1em;
+  font-family: 'Barlow Condensed', serif;
+  font-size: 0.95em;
+  color: black;
+}
+
+
+/* TOC links */
+#TOC a {
+  color: black !important;
+  text-decoration: none;
+}
+#TOC a:hover,
+#TOC a:focus {
+  color: black !important;
+  text-decoration: underline;
+}
+#TOC .active > a {
+  color: black !important;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+
+
+
+
+/* Center the intro section */
+.intro-center {
+  text-align: justified;       /* center text horizontally */
+  margin: 0 auto;           /* center the block itself */
+  max-width: 800px;         /* optional: control width */
+  padding: 4em 1em;         /* optional: spacing top/bottom */
+}
+
+/* If you also want vertical centering on first screen */
+.intro-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;        /* fill full viewport height */
+}
+
+
+
+
+/* Exclusion block: left-aligned text, vertically centered */
+.exclusion-block {
+  text-align: left;        /* left-align normal text */
+  margin: 0 auto;          /* center the block horizontally */
+  max-width: 800px;        /* control width */
+  padding: 4em 1em;        /* spacing */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: stretch;    /* let children take full width */
+  min-height: 100vh;       /* fill viewport height */
+}
+
+/* --- Center display equations --- */
+
+/* Pandoc/legacy hook */
+.exclusion-block .math.display {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+}
+
+/* MathJax v3 */
+.exclusion-block mjx-container[display="true"] {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+}
+
+/* KaTeX */
+.exclusion-block .katex-display {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+  align-self: center;
+  width: 100%;
+}
+
+/* --- Center images (raw <img> and Quarto figures) --- */
+.exclusion-block img {
+  display: block;
+  margin: 1em auto;
+}
+
+.exclusion-bl

@@ -1,0 +1,18 @@
+::: {.exclusion-block}
+
+##### <u>**Recentered IV is uncorrelated with latitude and longitude**</u>
+
+<br>
+
+For $\text{Interstate Variable}_{c} \in \{ \text{Treatment}_{c}, \text{Recentered IV}_{c}\}$, I run the following regression:
+
+$$\text{Interstate Variable}_{c} = \beta_0 + \beta_1 \frac{\text{Latitude}_c}{100} + \beta_2 \frac{\text{Longitude}_c}{100} + \epsilon_c$$
+
+When I regress latitude and longitude on the recentered instrument, the coefficients are zero.
+
+![](images/exclusion/econGeog.png){width="55%" fig-align="center"}
+
+[Go back](index.html#testing-the-exclusion-restriction)
+
+:::
+

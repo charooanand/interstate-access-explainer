@@ -1,0 +1,23 @@
+
+::: {.exclusion-block}
+
+##### <u>**Recentered IV does not predict counties pre-Interstate employment growth**</u>
+
+<br>
+
+For $\text{Interstate Variable}_{c} \in \{ \text{Treatment}_{c}, \text{Recentered IV}_{c}\}$, I run the following regression:
+
+$$
+\log(\text{Employment}_{c, 1950}) - \log(\text{Employment}_{c, 1930}) 
+= \beta_{0} + \beta_{1}\,\text{Interstate Variable}_{c} 
++ X_{c}\gamma + \varepsilon_{c}
+$$
+
+When I regress employment growth from 1930 to 1950 on the recentered instrument, the coefficient is zero.
+
+![](images/exclusion/preEmpTrend.png){width="90%" fig-align="center"}
+
+[Go back](index.html#testing-the-exclusion-restriction)
+:::
+
+

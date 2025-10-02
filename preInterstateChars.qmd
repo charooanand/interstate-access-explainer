@@ -1,0 +1,20 @@
+
+::: {.exclusion-block}
+
+##### <u>**Recentered IV does not predict other pre-Interstate county characteristics**</u>
+
+<br>
+
+
+For $x_{c} \in \{ \text{Population Density}_{c, 1940}, \text{Log House Value}_{c, 1940}, \text{Market Potential}_{c, 1950}\}$ and $\text{Interstate Variable}_{c} \in \{ \text{Treatment}_{c}, \text{Recentered IV}_{c}\}$ I run the following regression:
+
+
+$$
+x_{c} = \beta_{0} + \beta_{1}\,\text{Interstate Variable}_{c} + \varepsilon_{c}
+$$
+
+![](images/exclusion/preInterstateCharacteristics.png){width="100%" fig-align="center"}
+
+[Go back](index.html#testing-the-exclusion-restriction)
+
+:::
