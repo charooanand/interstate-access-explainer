@@ -355,5 +355,5 @@ $$
 $$
 
 
-![](images/coefplots/pooled/empFull.jpeg){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+[WEBSITE UNDER CONSTRUCTION]
 :::
