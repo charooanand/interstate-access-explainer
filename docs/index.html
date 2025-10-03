@@ -130,12 +130,12 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-background-color-overlay: #fcfcfc;
+          --cr-narrative-border-radius: 5px;
 --cr-narrative-overlay-max-width: 30%;
---cr-narrative-text-color-overlay: black;
 --cr-section-background-color: white;
---cr-narrative-border-radius: 5px;
 --cr-narrative-outer-margin: 25%;
+--cr-narrative-text-color-overlay: black;
+--cr-narrative-background-color-overlay: #fcfcfc;
         }
       </style>
     
@@ -318,7 +318,7 @@ window.Quarto = {
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-ike" data-scale-by="2" data-pan-to="0%,-30%">
+<div class="trigger new-trigger" data-scale-by="2" data-focus-on="cr-ike" data-pan-to="0%,-30%">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -567,8 +567,85 @@ window.Quarto = {
 = \beta_{0,\tau} + \beta_{1,\tau}\,\text{Treatment}_{c}
 + X_{c}\gamma_{\tau} + \delta_{t} + \varepsilon_{c, t}
 \]</span></p>
-<p>[WEBSITE UNDER CONSTRUCTION]</p>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-olsPooledPlot">
+<div class="narrative">
+<p>Here are the OLS estimates of <span class="math inline">\(\widehat{\beta}_{1, \tau}^{OLS}\)</span> and their 90% confidence intervals. They capture the correlation between Interstate access and employment growth and they correspond to the table at the beginning.</p>
 </div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
+<div class="narrative">
+<p>Using <span class="math inline">\(\text{RecenteredIV}_{c}\)</span> to instrument for <span class="math inline">\(\text{Treatment}_{c}\)</span> Here are the 2SLS estimates of <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV}\)</span> and their 90% confidence intervals. The size of these confidence intervals is pretty disappointing. While the IV point estimates generally exceed the OLS point estimates, we can’t reject the hypotheses <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV} \neq \widehat{\beta}_{1, \tau}^{OLS}\)</span> or <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV} \neq 0\)</span>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
+<div class="narrative">
+<p>Why are the confidence intervals so wide? One reason, of course, is that the 2SLS estimator uses less treatment variation to estimate the coefficient. However, there’s another reason. For every period <span class="math inline">\(\tau\)</span>, the regression uses the same number of observations (N = 13,845 = 2769 counties <span class="math inline">\(\times\)</span> 5 years). But the confidence intervals get wider in later periods. This tells me that the uncertainty around <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV}\)</span> is not just sampling variation, but genuine heterogeneity.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
+<div class="narrative">
+<p>In other words, the widening confidence intervals suggest that counties gaining Interstate access through the natural experiment do not follow a single growth trajectory, but instead diverge in their long-run outcomes.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
+<div class="narrative">
+<p>I examine reasons why counties may evolve differentially and the one that stands out is the pre-Interstate dependence on agriculture.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-highAgPlot">
+<div class="narrative">
+<p>Here are the <span class="math inline">\(\widehat{\beta}{1,\tau}^{IV}\)</span> and <span class="math inline">\(\widehat{\beta}{1,\tau}^{OLS}\)</span> estimates for counties where agriculture accounted for more than 20% of employment in 1950</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
+<div class="narrative">
+<p>And here are the <span class="math inline">\(\widehat{\beta}{1,\tau}^{IV}\)</span> and <span class="math inline">\(\widehat{\beta}{1,\tau}^{OLS}\)</span> estimates for counties where agriculture accounted for less than 20% of employment in 1950</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
+<div class="narrative">
+<p>This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away due to the lower transportation costs - maybe it’s easier to move a factory or an office than to move to a farm.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
+<div class="narrative">
+<p>In the following section, I test for and examine this heterogeneity further.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-olsPooledPlot" class="sticky">
+<p style="margin-left: 15%; color: transparent;">
+All Counties
+</p>
+<p><img src="images/coefplots/pooled/empFullTreatmentOnly.jpeg" class="img-fluid" style="margin-left: 10%; display: block; margin-right: auto;;width:30.0%"></p>
+</div>
+<div id="cr-ivPooledPlot" class="sticky">
+<p style="margin-left: 15%; color: transparent;">
+All Counties
+</p>
+<p><img src="images/coefplots/pooled/empFull.jpeg" class="img-fluid" style="margin-left: 10%; display: block; margin-right: auto;;width:30.0%"></p>
+</div>
+<div id="cr-highAgPlot" class="sticky">
+<p style="margin-left: 15%;">
+High Agriculture Counties
+</p>
+<p><img src="images/coefplots/pooled/empHighAg.jpeg" class="img-fluid" style="margin-left: 10%; display: block; margin-right: auto;;width:30.0%"></p>
+</div>
+<div id="cr-lowAgPlot" class="sticky">
+<p style="margin-left: 15%;">
+Low Agriculture Counties
+</p>
+<p><img src="images/coefplots/pooled/empLowAg.jpeg" class="img-fluid" style="margin-left: 10%; display: block; margin-right: auto;;width:30.0%"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>[WEBSITE UNDER CONSTRUCTION]</p>
 
 
 </section>

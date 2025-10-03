@@ -354,6 +354,52 @@ $$
 + X_{c}\gamma_{\tau} + \delta_{t} + \varepsilon_{c, t}
 $$
 
+:::: {.cr-section layout="overlay-right"}
+
+Here are the OLS estimates of $\widehat{\beta}_{1, \tau}^{OLS}$ and their 90\% confidence intervals. They capture the correlation between Interstate access and employment growth and they correspond to the table at the beginning. [@cr-olsPooledPlot]
+
+Using $\text{RecenteredIV}_{c}$ to instrument for $\text{Treatment}_{c}$ Here are the 2SLS estimates of $\widehat{\beta}_{1, \tau}^{IV}$ and their 90\% confidence intervals. The size of these confidence intervals is pretty disappointing. While the IV point estimates generally exceed the OLS point estimates, we can't reject the hypotheses $\widehat{\beta}_{1, \tau}^{IV} \neq \widehat{\beta}_{1, \tau}^{OLS}$ or $\widehat{\beta}_{1, \tau}^{IV} \neq 0$.[@cr-ivPooledPlot]
+
+Why are the confidence intervals so wide? One reason, of course, is that the 2SLS estimator uses less treatment variation to estimate the coefficient. However, there's another reason. For every period $\tau$, the regression uses the same number of observations (N = 13,845 = 2769 counties $\times$ 5 years). But the confidence intervals get wider in later periods. This tells me that the uncertainty around $\widehat{\beta}_{1, \tau}^{IV}$ is not just sampling variation, but genuine heterogeneity. [@cr-ivPooledPlot] 
+
+In other words, the widening confidence intervals suggest that counties gaining Interstate access through the natural experiment do not follow a single growth trajectory, but instead diverge in their long-run outcomes. [@cr-ivPooledPlot]
+
+
+I examine reasons why counties may evolve differentially and the one that stands out is the pre-Interstate dependence on agriculture. [@cr-ivPooledPlot]
+
+Here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where agriculture accounted for more than 20% of employment in 1950 [@cr-highAgPlot].
+
+And here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where agriculture accounted for less than 20% of employment in 1950 [@cr-lowAgPlot].
+
+This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away due to the lower transportation costs - maybe it's easier to move a factory or an office than to move to a farm. [@cr-lowAgPlot]
+
+In the following section, I test for and examine this heterogeneity further. [@cr-lowAgPlot]
+
+
+::: {#cr-olsPooledPlot}
+<p style="margin-left: 15%; color: transparent;">All Counties</p>
+![](images/coefplots/pooled/empFullTreatmentOnly.jpeg){width="30%" style="margin-left: 10%; display: block; margin-right: auto;"}
+:::
+
+
+::: {#cr-ivPooledPlot}
+<p style="margin-left: 15%; color: transparent;">All Counties</p>
+![](images/coefplots/pooled/empFull.jpeg){width="30%" style="margin-left: 10%; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-highAgPlot}
+<p style="margin-left: 15%;">High Agriculture Counties</p>
+![](images/coefplots/pooled/empHighAg.jpeg){width="30%" style="margin-left: 10%; display: block; margin-right: auto;"}
+
+:::
+
+
+::: {#cr-lowAgPlot}
+<p style="margin-left: 15%;">Low Agriculture Counties</p>
+![](images/coefplots/pooled/empLowAg.jpeg){width="30%" style="margin-left: 10%; display: block; margin-right: auto;"}
+
+:::
+:::: 
+:::
 
 [WEBSITE UNDER CONSTRUCTION]
-:::
