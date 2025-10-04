@@ -34,7 +34,7 @@ This project introduces a new design to identify the causal effect of Interstate
 
 - Over the last century, most job growth has occurred in counties connected to the Interstate system.
 
-- From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties are non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak & Hull’s (2023) recentered instrument, I use predicted counterfactual networks to recover quasi-experimental variation from this planning shock.
+- From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak & Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.
 
 - Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.
 :::
@@ -87,7 +87,7 @@ The dependent variable is the log change in employment in county $c$ since 1953.
 :::: {.cr-section layout="overlay-right"}
 The table reports the OLS estimates of $\beta_{1,\tau}$. The pattern of results is unsurprising given the raw data; the estimates are statistically significant and grow in magnitude over time. @cr-ols
 
-Because the dependent variable is a log difference, the coefficient $\beta_{1,\tau}$ can be interpreted as the percentage difference in cumulative employment growth between treatment and control counties from 1953 to time period $\tau$. In particular, a coefficient $\hat\beta_{1,\tau}$ implies that treatment counties experienced $(e^{\hat\beta_{1,\tau}} - 1) \times 100$ percent higher growth relative to controls. For small coefficients, the approximation $\hat\beta_{1,\tau} \times 100$ is accurate; for example, $\hat\beta_{1,\tau} = 0.33$ corresponds to about 39 percent higher cumulative growth. @cr-ols
+A coefficient $\hat\beta_{1,\tau}$ implies that treatment counties experienced $(e^{\hat\beta_{1,\tau}} - 1) \times 100$ percent higher growth relative to control counties. For small coefficients, the approximation $\hat\beta_{1,\tau} \times 100$ is accurate; for example, $\hat\beta_{1,\tau} = 0.33$ corresponds to about 39 percent higher cumulative growth. @cr-ols
 
 
 

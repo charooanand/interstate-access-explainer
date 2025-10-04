@@ -131,12 +131,12 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-outer-margin: 25%;
---cr-section-background-color: white;
+          --cr-section-background-color: white;
 --cr-narrative-overlay-max-width: 30%;
---cr-narrative-background-color-overlay: #fcfcfc;
 --cr-narrative-border-radius: 5px;
 --cr-narrative-text-color-overlay: black;
+--cr-narrative-background-color-overlay: #fcfcfc;
+--cr-narrative-outer-margin: 25%;
         }
       </style>
     
@@ -169,7 +169,7 @@ window.Quarto = {
 <p>🔍 <strong>Key Findings</strong></p>
 <ul>
 <li><p>Over the last century, most job growth has occurred in counties connected to the Interstate system.</p></li>
-<li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties are non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument, I use predicted counterfactual networks to recover quasi-experimental variation from this planning shock.</p></li>
+<li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.</p></li>
 <li><p>Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
 </ul>
 </div>
@@ -233,7 +233,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ols">
 <div class="narrative">
-<p>Because the dependent variable is a log difference, the coefficient <span class="math inline">\(\beta_{1,\tau}\)</span> can be interpreted as the percentage difference in cumulative employment growth between treatment and control counties from 1953 to time period <span class="math inline">\(\tau\)</span>. In particular, a coefficient <span class="math inline">\(\hat\beta_{1,\tau}\)</span> implies that treatment counties experienced <span class="math inline">\((e^{\hat\beta_{1,\tau}} - 1) \times 100\)</span> percent higher growth relative to controls. For small coefficients, the approximation <span class="math inline">\(\hat\beta_{1,\tau} \times 100\)</span> is accurate; for example, <span class="math inline">\(\hat\beta_{1,\tau} = 0.33\)</span> corresponds to about 39 percent higher cumulative growth.</p>
+<p>A coefficient <span class="math inline">\(\hat\beta_{1,\tau}\)</span> implies that treatment counties experienced <span class="math inline">\((e^{\hat\beta_{1,\tau}} - 1) \times 100\)</span> percent higher growth relative to control counties. For small coefficients, the approximation <span class="math inline">\(\hat\beta_{1,\tau} \times 100\)</span> is accurate; for example, <span class="math inline">\(\hat\beta_{1,\tau} = 0.33\)</span> corresponds to about 39 percent higher cumulative growth.</p>
 </div>
 </div>
 </div>
