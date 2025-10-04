@@ -121,11 +121,11 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-overlay-max-width: 30%;
---cr-narrative-background-color-overlay: #fcfcfc;
+          --cr-narrative-border-radius: 5px;
 --cr-section-background-color: white;
---cr-narrative-border-radius: 5px;
 --cr-narrative-outer-margin: 25%;
+--cr-narrative-overlay-max-width: 30%;
+--cr-narrative-background-color-overlay: #fcfcfc;
 --cr-narrative-text-color-overlay: black;
         }
       </style>
@@ -134,8 +134,8 @@ window.Quarto = {
 
 
 
-<section id="recentered-iv-x-high-ag-indicator-does-not-predict-other-pre-interstate-county-characteristics" class="level5 exclusion-block">
-<h5 class="anchored" data-anchor-id="recentered-iv-x-high-ag-indicator-does-not-predict-other-pre-interstate-county-characteristics"><u><strong>(Recentered IV x High Ag Indicator) does not predict other pre-Interstate county characteristics</strong></u></h5>
+<section id="recentered-iv-x-high-ag-indicator-does-not-predict-pre-interstate-county-characteristics" class="level6 exclusion-block">
+<h6 class="anchored" data-anchor-id="recentered-iv-x-high-ag-indicator-does-not-predict-pre-interstate-county-characteristics"><u><strong>(Recentered IV x High Ag Indicator) does not predict pre-Interstate county characteristics</strong></u></h6>
 <p><br></p>
 <p>For <span class="math inline">\(x_{c} \in \{ \text{Population Density}_{c, 1940}, \text{Log House Value}_{c, 1940}, \text{Market Potential}_{c, 1950}\}\)</span></p>
 <p><span class="math display">\[
@@ -147,9 +147,22 @@ x_{c} = \beta_{0} + \beta_{1}(\text{RecenteredIV}_{c}\times \text{High Ag}_{c}) 
 </figure>
 </div>
 <p><small>Note: I am not worried about that <span class="math inline">\(*\)</span>. If the interacted instrument is truly uncorrelated with counties’ potential outcomes, 1 in 10 tests for this will be rejected at the 10% significance level, by construction of hypothesis testing.</small></p>
+</section>
+<section id="recentered-iv-x-high-ag-indicator-does-not-pre-interstate-employment-growth" class="level6 exclusion-block">
+<h6 class="anchored" data-anchor-id="recentered-iv-x-high-ag-indicator-does-not-pre-interstate-employment-growth"><u><strong>(Recentered IV x High Ag Indicator) does not pre-Interstate employment growth</strong></u></h6>
+<p><br></p>
+<p><span class="math display">\[\small
+\log(\text{Employment}_{c, 1950}) - \log(\text{Employment}_{c, 1930})
+= \beta_{0} + \beta_{1}(\text{RecenteredIV}_{c}\times \text{High Ag}_{c})  + \beta_{2}\text{RecenteredIV}_{c}
++ X_{c}\gamma + \varepsilon_{c}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/exclusion/preEmpTrendInteracted.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
 <p><a href="index.html#how-is-this-different">Go back</a></p>
 </section>
-<p>[WEBSITE UNDER CONSTRUCTION]</p>
 
 
 

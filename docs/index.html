@@ -131,12 +131,12 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-section-background-color: white;
---cr-narrative-overlay-max-width: 30%;
+          --cr-narrative-text-color-overlay: black;
 --cr-narrative-border-radius: 5px;
---cr-narrative-text-color-overlay: black;
---cr-narrative-background-color-overlay: #fcfcfc;
+--cr-section-background-color: white;
+--cr-narrative-overlay-max-width: 30%;
 --cr-narrative-outer-margin: 25%;
+--cr-narrative-background-color-overlay: #fcfcfc;
         }
       </style>
     
@@ -149,13 +149,12 @@ window.Quarto = {
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p>The <strong>Federal-Aid Highway Act of 1956</strong> created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.</p>
-<p>I set out to identify and estimate the causal effect of Interstate access on county employment growth. The challenge, of course, is that highways weren’t placed at random. Because highways are routed to connect productive and growing hubs, simple correlations reflect selection bias.</p>
-<p>This project introduces a new design to identify the causal effect of Interstate access on counties’ long-run employment growth.</p>
+<p><br> The <strong>Federal-Aid Highway Act of 1956</strong> created the 41,000-mile Interstate system — the largest public works project in U.S. history.</p>
+<p>Like most major infrastructure projects, it came with promises of economic development.</p>
+<p>In this project, I estimate the causal effect of Interstate access on county employment growth using a new design-based instrumental variable.</p>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
-<p><br></p>
 <div class="quarto-figure quarto-figure-center" style="float: right; margin-left: 5em; width:100%">
 <figure class="figure">
 <p><img src="images/Alaskan-Way-Viaduct-Seattle-1967.jpg" class="img-fluid figure-img"></p>
@@ -166,9 +165,10 @@ window.Quarto = {
 </div>
 </section>
 <div class="info-block">
-<p>🔍 <strong>Key Findings</strong></p>
+<p>🔍 <strong>Summary</strong></p>
 <ul>
-<li><p>Over the last century, most job growth has occurred in counties connected to the Interstate system.</p></li>
+<li><p>Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.</p></li>
+<li><p>Of course, highways were not placed at random. The Interstate system was planned to connect metropolitan areas, so this comparison reflects selection bias. These trajectories could be driven by concurrent forces of urbanization rather than by Interstate access itself.</p></li>
 <li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.</p></li>
 <li><p>Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
 </ul>
@@ -215,7 +215,7 @@ window.Quarto = {
 <section id="baseline-employment-growth-regression-model" class="level3">
 <h3 class="anchored" data-anchor-id="baseline-employment-growth-regression-model">Baseline Employment Growth Regression Model</h3>
 <p><br></p>
-<p>To flexibly capture dynamic effects while preserving statistical power, I group years into 4-year periods, <span class="math inline">\(\tau \in \{1970\text{-}1974,\,1975\text{-}1979,\,\dots,\,2010\text{-}2014\}\)</span>. For each period <span class="math inline">\(\tau\)</span>, I estimate the following specification, with counties indexed by <span class="math inline">\(c\)</span>:</p>
+<p>To flexibly capture dynamic effects while preserving statistical power, I group years into 5-year periods, <span class="math inline">\(\tau \in \{1970\text{-}1974,\,1975\text{-}1979,\,\dots,\,2010\text{-}2014\}\)</span>. For each period <span class="math inline">\(\tau\)</span>, I estimate the following specification, with counties indexed by <span class="math inline">\(c\)</span>:</p>
 <div style="font-size: 1.25em;">
 <p><span class="math display">\[
 \log(Y_{c, t}) - \log(Y_{c,1953})
@@ -233,7 +233,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ols">
 <div class="narrative">
-<p>A coefficient <span class="math inline">\(\hat\beta_{1,\tau}\)</span> implies that treatment counties experienced <span class="math inline">\((e^{\hat\beta_{1,\tau}} - 1) \times 100\)</span> percent higher growth relative to control counties. For small coefficients, the approximation <span class="math inline">\(\hat\beta_{1,\tau} \times 100\)</span> is accurate; for example, <span class="math inline">\(\hat\beta_{1,\tau} = 0.33\)</span> corresponds to about 39 percent higher cumulative growth.</p>
+<p>A coefficient <span class="math inline">\(\hat\beta_{1,\tau}\)</span> implies that treatment counties experienced <span class="math inline">\((e^{\hat\beta_{1,\tau}} - 1) \times 100\)</span> percent higher growth relative to control counties. For example, <span class="math inline">\(\hat\beta_{1,2010–2014} = 0.326\)</span> means that the employment growth rate from 1953-2012 was about a third higher in treatment counties relative to control counties.</p>
 </div>
 </div>
 </div>
@@ -327,7 +327,7 @@ window.Quarto = {
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="2" data-pan-to="0%,-30%" data-focus-on="cr-ike">
+<div class="trigger new-trigger" data-focus-on="cr-ike" data-pan-to="0%,-30%" data-scale-by="2">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -543,7 +543,7 @@ window.Quarto = {
 <h1>Validity of Instrument</h1>
 <section id="first-stage-regression" class="level3">
 <h3 class="anchored" data-anchor-id="first-stage-regression">First Stage Regression</h3>
-<p>I run the following regression with the unadjusted and recentered instruments on the right-hand side. <span class="math display">\[ \large
+<p>I run the following regression for <span class="math inline">\(\text{Instrument}_{c} \in \{ \text{UnadjustedIV}_{c}, \text{RecenteredIV}_{c}\}\)</span>. <span class="math display">\[ \large
 \text{Treatment}_{c}
 = \pi_{0} + \pi_{1}\text{Instrument}_{c}
 + X_{c}\pi_2 + \varepsilon_{c}
@@ -580,12 +580,12 @@ window.Quarto = {
 <div class="narrative-col">
 <div class="trigger new-trigger" data-focus-on="cr-olsPooledPlot">
 <div class="narrative">
-<p>Here are the OLS estimates of <span class="math inline">\(\widehat{\beta}_{1, \tau}^{OLS}\)</span> and their 90% confidence intervals. They capture the correlation between Interstate access and employment growth and they correspond to the table at the beginning.</p>
+<p>Here are the OLS estimates of <span class="math inline">\(\widehat{\beta}_{1, \tau}^{OLS}\)</span> and their 90% confidence intervals. They capture the correlation between Interstate access and employment growth and correspond to the earlier table.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
 <div class="narrative">
-<p>Using <span class="math inline">\(\text{RecenteredIV}_{c}\)</span> to instrument for <span class="math inline">\(\text{Treatment}_{c}\)</span> Here are the 2SLS estimates of <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV}\)</span> and their 90% confidence intervals. The size of these confidence intervals is pretty disappointing. While the IV point estimates generally exceed the OLS point estimates, we can’t reject the hypotheses <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV} \neq \widehat{\beta}_{1, \tau}^{OLS}\)</span> or <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV} \neq 0\)</span>.</p>
+<p>I then use <span class="math inline">\(\text{RecenteredIV}_{c}\)</span> to instrument for <span class="math inline">\(\text{Treatment}_{c}\)</span>. Here are the 2SLS estimates of <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV}\)</span> and their 90% confidence intervals. The size of these confidence intervals is pretty disappointing. While the IV point estimates generally exceed the OLS point estimates, we can’t learn much from this. Specifically, we cannot reject the hypotheses that <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV} = \widehat{\beta}_{1, \tau}^{OLS}\)</span> or <span class="math inline">\(\widehat{\beta}_{1, \tau}^{IV} = 0\)</span>.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
@@ -595,12 +595,12 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
 <div class="narrative">
-<p>In other words, the widening confidence intervals suggest that counties gaining Interstate access through the natural experiment do not follow a single growth trajectory, but instead diverge in their long-run outcomes.</p>
+<p>Perhaps, the confidence intervals widen over time because counties gaining Interstate access through the natural experiment do not follow a single growth trajectory, and instead diverge in their long-run outcomes.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
 <div class="narrative">
-<p>I examine reasons why counties may evolve differentially and the one that stands out is the pre-Interstate dependence on agriculture.</p>
+<p>I examine reasons why counties may evolve differently in response to Interstate access and the one that stands out is the pre-Interstate dependence on agriculture.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-highAgPlot">
@@ -657,8 +657,8 @@ Low Agriculture Counties
 </section>
 <section id="heterogeneity-across-agriculture-dependence" class="level1">
 <h1>Heterogeneity Across Agriculture Dependence</h1>
-<p>Splitting the the sample into high vs low agriculture groups pointed to effect heterogeneity but to formally test for this heterogeneity and to more closely examine the dynamics, I set up a different regression specification.</p>
-<p>To capture dynamic effects with total flexibility, without worrying about statistical power, I estimate a separate regression for each year <span class="math inline">\(t \in \{1970, ..., 2016\}\)</span> For each year <span class="math inline">\(t\)</span>, I estimate the following specification, with counties indexed by <span class="math inline">\(c\)</span>:</p>
+<p>Splitting the sample into high vs low agriculture groups suggested an effect heterogeneity but, to formally test for this and to more closely examine the dynamics, I set up a different regression specification.</p>
+<p>To capture dynamic effects with total flexibility, I estimate a separate regression for each year <span class="math inline">\(t \in \{1970, ..., 2016\}\)</span> For each year <span class="math inline">\(t\)</span>, I estimate the following specification, with counties indexed by <span class="math inline">\(c\)</span>:</p>
 <p><br></p>
 <p><span class="math display">\[
 \log(Y_{c, t}) - \log(Y_{c,1953})
@@ -671,7 +671,7 @@ Low Agriculture Counties
 <ul>
 <li><p>I estimate coefficients separately by year, so each regression uses N = 2,769 counties.</p></li>
 <li><p><span class="math inline">\(\gamma_{t}\)</span>, the weight on pre-Interstate characteristics, can now vary by year <span class="math inline">\(t\)</span> rather than being fixed within each period <span class="math inline">\(\tau\)</span>.</p></li>
-<li><p>The regression produces estimates and standard errors for <span class="math inline">\(\beta_{2,t}\)</span>, allowing direct statistical tests of heterogeneity.</p></li>
+<li><p>The regression produces estimates and standard errors for <span class="math inline">\(\beta_{2,t}\)</span>, enabling a formal hypothesis test for heterogeneity across agriculture dependence.</p></li>
 <li><p>To use <span class="math inline">\(\text{RecenteredIV}_{c}\)</span>, I check that the <a href="firstStageInteracted.html">first stage is strong</a> and that the <a href="exclusionInteracted.html">exclusion restriction holds</a> for the interacted instrument.</p></li>
 </ul>
 </section>

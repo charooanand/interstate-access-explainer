@@ -7,12 +7,13 @@
 
 ::::: columns
 ::: {.column width="45%"}
+<br>
+The **Federal-Aid Highway Act of 1956** created the 41,000-mile Interstate system — the largest public works project in U.S. history. 
 
-The **Federal-Aid Highway Act of 1956** created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.
+Like most major infrastructure projects, it came with promises of economic development.
 
-I set out to identify and estimate the causal effect of Interstate access on county employment growth. The challenge, of course, is that highways weren’t placed at random. Because highways are routed to connect productive and growing hubs, simple correlations reflect selection bias.
+In this project, I estimate the causal effect of Interstate access on county employment growth using a new design-based instrumental variable.
 
-This project introduces a new design to identify the causal effect of Interstate access on counties' long-run employment growth.
 :::
 
 ::: {.column width="10%"}
@@ -20,7 +21,6 @@ This project introduces a new design to identify the causal effect of Interstate
 :::
 
 ::: {.column width="45%"}
-<br>
 
 ![Seattle, 1967](images/Alaskan-Way-Viaduct-Seattle-1967.jpg){style="float: right; margin-left: 5em; width:100%"}
 :::
@@ -30,9 +30,11 @@ This project introduces a new design to identify the causal effect of Interstate
 
 
 ::: {.info-block}
-&#128269; **Key Findings**
+&#128269; **Summary**
 
-- Over the last century, most job growth has occurred in counties connected to the Interstate system.
+- Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.
+
+- Of course, highways were not placed at random. The Interstate system was planned to connect metropolitan areas, so this comparison reflects selection bias. These trajectories could be driven by concurrent forces of urbanization rather than by Interstate access itself.
 
 - From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak & Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.
 
@@ -72,7 +74,7 @@ Before thinking about the causal effect of Interstate access, I specify a regres
 
 <br>
 
-To flexibly capture dynamic effects while preserving statistical power, I group years into 4-year periods, $\tau \in \{1970\text{-}1974,\,1975\text{-}1979,\,\dots,\,2010\text{-}2014\}$. For each period $\tau$, I estimate the following specification, with counties indexed by $c$:
+To flexibly capture dynamic effects while preserving statistical power, I group years into 5-year periods, $\tau \in \{1970\text{-}1974,\,1975\text{-}1979,\,\dots,\,2010\text{-}2014\}$. For each period $\tau$, I estimate the following specification, with counties indexed by $c$:
 
 ::: {style="font-size: 1.25em;"}
 $$
@@ -87,7 +89,7 @@ The dependent variable is the log change in employment in county $c$ since 1953.
 :::: {.cr-section layout="overlay-right"}
 The table reports the OLS estimates of $\beta_{1,\tau}$. The pattern of results is unsurprising given the raw data; the estimates are statistically significant and grow in magnitude over time. @cr-ols
 
-A coefficient $\hat\beta_{1,\tau}$ implies that treatment counties experienced $(e^{\hat\beta_{1,\tau}} - 1) \times 100$ percent higher growth relative to control counties. For small coefficients, the approximation $\hat\beta_{1,\tau} \times 100$ is accurate; for example, $\hat\beta_{1,\tau} = 0.33$ corresponds to about 39 percent higher cumulative growth. @cr-ols
+A coefficient $\hat\beta_{1,\tau}$ implies that treatment counties experienced $(e^{\hat\beta_{1,\tau}} - 1) \times 100$ percent higher growth relative to control counties. For example, $\hat\beta_{1,2010–2014} = 0.326$ means that the  employment growth rate from 1953-2012 was about a third higher in treatment counties relative to control counties. @cr-ols
 
 
 
@@ -313,7 +315,7 @@ It was a lot of work to get here and the _correct_ modelling choices are not obv
 
 ### First Stage Regression
 
-I run the following regression with the unadjusted and recentered instruments on the right-hand side.
+I run the following regression for $\text{Instrument}_{c} \in \{ \text{UnadjustedIV}_{c}, \text{RecenteredIV}_{c}\}$.
 $$ \large
 \text{Treatment}_{c} 
 = \pi_{0} + \pi_{1}\text{Instrument}_{c} 
@@ -366,16 +368,15 @@ $$
 
 :::: {.cr-section layout="overlay-right"}
 
-Here are the OLS estimates of $\widehat{\beta}_{1, \tau}^{OLS}$ and their 90\% confidence intervals. They capture the correlation between Interstate access and employment growth and they correspond to the table at the beginning. [@cr-olsPooledPlot]
+Here are the OLS estimates of $\widehat{\beta}_{1, \tau}^{OLS}$ and their 90\% confidence intervals. They capture the correlation between Interstate access and employment growth and correspond to the earlier table. [@cr-olsPooledPlot]
 
-Using $\text{RecenteredIV}_{c}$ to instrument for $\text{Treatment}_{c}$ Here are the 2SLS estimates of $\widehat{\beta}_{1, \tau}^{IV}$ and their 90\% confidence intervals. The size of these confidence intervals is pretty disappointing. While the IV point estimates generally exceed the OLS point estimates, we can't reject the hypotheses $\widehat{\beta}_{1, \tau}^{IV} \neq \widehat{\beta}_{1, \tau}^{OLS}$ or $\widehat{\beta}_{1, \tau}^{IV} \neq 0$.[@cr-ivPooledPlot]
+I then use $\text{RecenteredIV}_{c}$ to instrument for $\text{Treatment}_{c}$. Here are the 2SLS estimates of $\widehat{\beta}_{1, \tau}^{IV}$ and their 90\% confidence intervals. The size of these confidence intervals is pretty disappointing. While the IV point estimates generally exceed the OLS point estimates, we can't learn much from this. Specifically, we cannot reject the hypotheses that $\widehat{\beta}_{1, \tau}^{IV} = \widehat{\beta}_{1, \tau}^{OLS}$ or $\widehat{\beta}_{1, \tau}^{IV} = 0$.[@cr-ivPooledPlot]
 
 Why are the confidence intervals so wide? One reason, of course, is that the 2SLS estimator uses less treatment variation to estimate the coefficient. However, there's another reason. For every period $\tau$, the regression uses the same number of observations (N = 13,845 = 2769 counties $\times$ 5 years). But the confidence intervals get wider in later periods. This tells me that the uncertainty around $\widehat{\beta}_{1, \tau}^{IV}$ is not just sampling variation, but genuine heterogeneity. [@cr-ivPooledPlot] 
 
-In other words, the widening confidence intervals suggest that counties gaining Interstate access through the natural experiment do not follow a single growth trajectory, but instead diverge in their long-run outcomes. [@cr-ivPooledPlot]
+Perhaps, the confidence intervals widen over time because counties gaining Interstate access through the natural experiment do not follow a single growth trajectory, and instead diverge in their long-run outcomes. [@cr-ivPooledPlot]
 
-
-I examine reasons why counties may evolve differentially and the one that stands out is the pre-Interstate dependence on agriculture. [@cr-ivPooledPlot]
+I examine reasons why counties may evolve differently in response to Interstate access and the one that stands out is the pre-Interstate dependence on agriculture. [@cr-ivPooledPlot]
 
 Here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where agriculture accounted for more than 20% of employment in 1950 [@cr-highAgPlot].
 
@@ -414,9 +415,9 @@ In the following section, I test for and examine this heterogeneity further. [@c
 
 # Heterogeneity Across Agriculture Dependence
 
-Splitting the the sample into high vs low agriculture groups pointed to effect heterogeneity but to formally test for this heterogeneity and to more closely examine the dynamics, I set up a different regression specification.
+Splitting the sample into high vs low agriculture groups suggested an effect heterogeneity but, to formally test for this and to more closely examine the dynamics, I set up a different regression specification.
 
-To capture dynamic effects with total flexibility, without worrying about statistical power, I estimate a separate regression for each year $t \in \{1970, ..., 2016\}$ For each year $t$, I estimate the following specification, with counties indexed by $c$:
+To capture dynamic effects with total flexibility, I estimate a separate regression for each year $t \in \{1970, ..., 2016\}$ For each year $t$, I estimate the following specification, with counties indexed by $c$:
 
 <br>
 
@@ -436,7 +437,7 @@ This differs from fitting the previous regression separately for high- and low-a
 
 - $\gamma_{t}$, the weight on pre-Interstate characteristics, can now vary by year $t$ rather than being fixed within each period $\tau$.
 
-- The regression produces estimates and standard errors for $\beta_{2,t}$, allowing direct statistical tests of heterogeneity.
+- The regression produces estimates and standard errors for $\beta_{2,t}$, enabling a formal hypothesis test for heterogeneity across agriculture dependence.
 
 - To use $\text{RecenteredIV}_{c}$, I check that the [first stage is strong](firstStageInteracted.html) and that the [exclusion restriction holds](exclusionInteracted.html) for the interacted instrument.
 

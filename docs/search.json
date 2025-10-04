@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Raw Data & Employment Growth Regression",
     "section": "",
-    "text": "The Federal-Aid Highway Act of 1956 created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.\nI set out to identify and estimate the causal effect of Interstate access on county employment growth. The challenge, of course, is that highways weren’t placed at random. Because highways are routed to connect productive and growing hubs, simple correlations reflect selection bias.\nThis project introduces a new design to identify the causal effect of Interstate access on counties’ long-run employment growth.\n\n\n\n\n\n\n\nSeattle, 1967"
+    "text": "The Federal-Aid Highway Act of 1956 created the 41,000-mile Interstate system — the largest public works project in U.S. history.\nLike most major infrastructure projects, it came with promises of economic development.\nIn this project, I estimate the causal effect of Interstate access on county employment growth using a new design-based instrumental variable.\n\n\n\n\n\n\nSeattle, 1967"
   },
   {
     "objectID": "index.html#interstate-access-employment-growth-evidence-from-a-design-based-instrument",
     "href": "index.html#interstate-access-employment-growth-evidence-from-a-design-based-instrument",
     "title": "Raw Data & Employment Growth Regression",
     "section": "",
-    "text": "The Federal-Aid Highway Act of 1956 created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.\nI set out to identify and estimate the causal effect of Interstate access on county employment growth. The challenge, of course, is that highways weren’t placed at random. Because highways are routed to connect productive and growing hubs, simple correlations reflect selection bias.\nThis project introduces a new design to identify the causal effect of Interstate access on counties’ long-run employment growth.\n\n\n\n\n\n\n\nSeattle, 1967"
+    "text": "The Federal-Aid Highway Act of 1956 created the 41,000-mile Interstate system — the largest public works project in U.S. history.\nLike most major infrastructure projects, it came with promises of economic development.\nIn this project, I estimate the causal effect of Interstate access on county employment growth using a new design-based instrumental variable.\n\n\n\n\n\n\nSeattle, 1967"
   },
   {
     "objectID": "preEmpTrend.html",
@@ -46,6 +46,6 @@
     "href": "exclusionInteracted.html",
     "title": "",
     "section": "",
-    "text": "(Recentered IV x High Ag Indicator) does not predict other pre-Interstate county characteristics\n\nFor \\(x_{c} \\in \\{ \\text{Population Density}_{c, 1940}, \\text{Log House Value}_{c, 1940}, \\text{Market Potential}_{c, 1950}\\}\\)\n\\[\nx_{c} = \\beta_{0} + \\beta_{1}(\\text{RecenteredIV}_{c}\\times \\text{High Ag}_{c}) + \\beta_{2}\\text{RecenteredIV}_{c} + \\varepsilon_{c}\n\\]\n\n\n\n\n\nNote: I am not worried about that \\(*\\). If the interacted instrument is truly uncorrelated with counties’ potential outcomes, 1 in 10 tests for this will be rejected at the 10% significance level, by construction of hypothesis testing.\nGo back\n\n[WEBSITE UNDER CONSTRUCTION]"
+    "text": "(Recentered IV x High Ag Indicator) does not predict pre-Interstate county characteristics\n\nFor \\(x_{c} \\in \\{ \\text{Population Density}_{c, 1940}, \\text{Log House Value}_{c, 1940}, \\text{Market Potential}_{c, 1950}\\}\\)\n\\[\nx_{c} = \\beta_{0} + \\beta_{1}(\\text{RecenteredIV}_{c}\\times \\text{High Ag}_{c}) + \\beta_{2}\\text{RecenteredIV}_{c} + \\varepsilon_{c}\n\\]\n\n\n\n\n\nNote: I am not worried about that \\(*\\). If the interacted instrument is truly uncorrelated with counties’ potential outcomes, 1 in 10 tests for this will be rejected at the 10% significance level, by construction of hypothesis testing.\n\n\n(Recentered IV x High Ag Indicator) does not pre-Interstate employment growth\n\n\\[\\small\n\\log(\\text{Employment}_{c, 1950}) - \\log(\\text{Employment}_{c, 1930})\n= \\beta_{0} + \\beta_{1}(\\text{RecenteredIV}_{c}\\times \\text{High Ag}_{c})  + \\beta_{2}\\text{RecenteredIV}_{c}\n+ X_{c}\\gamma + \\varepsilon_{c}\n\\]\n\n\n\n\n\nGo back"
   }
 ]
