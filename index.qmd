@@ -25,8 +25,18 @@ This project introduces a new design to identify the causal effect of Interstate
 ![Seattle, 1967](images/Alaskan-Way-Viaduct-Seattle-1967.jpg){style="float: right; margin-left: 5em; width:100%"}
 :::
 :::::
+:::
 
 
+
+::: {.info-block}
+&#128269; **Key Findings**
+
+- Over the last century, most job growth has occurred in counties connected to the Interstate system.
+
+- From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties are non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak & Hull’s (2023) recentered instrument, I use predicted counterfactual networks to recover quasi-experimental variation from this planning shock.
+
+- Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.
 :::
 
 
@@ -251,13 +261,13 @@ $$\Huge \mathbf{=}$$
 
 :::: {.cr-section layout="overlay-right"}
 
-I extend this idea to construct a recentered instrument for $Treatment_c$, the indicator for a county being within 25km of an Interstate highway. [@cr-basemap]
+I extend this idea to construct a recentered instrument for $\text{Treatment}_c$, the indicator for a county being within 25km of an Interstate highway. [@cr-basemap]
 
 The discontintuity implied a natural experiment; there was a set of counties near the cutoff that were plausibly randomly targeted by Interstate planners. To predict which counties these were, I estimate a probability model that incorporates other planning considerations - such as elevation, surface water, and military/manufacturing importance. The map shows the results of this prediction. Near-cutoff 'coin-flip' counties are in red and above-cutoff counties that would have been targeted regardless are blue. [@cr-compliersAndAlwaysTakersMap]
 
 I select red counties that did in fact have populations above 50,000 and draw a straight-line network to connect them. Specifically, I use a proximity graph to predict an engineer's optimal network. [@cr-ivBetaSkeleton]
 
-Analogous to the _actual treatment_ stylized example, an $UnadjustedIV_c$ is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of $Treatment_c$. [@cr-unadjustedIV]
+Analogous to the _actual treatment_ stylized example, an $\text{UnadjustedIV}_c$ is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of $\text{Treatment}_c$. [@cr-unadjustedIV]
 
 Then, by permuting which red counties get targetted, I simulate 50 predicted counterfactual networks. [@cr-counterfactualBetaSkeletons]
 
@@ -303,7 +313,7 @@ It was a lot of work to get here and the _correct_ modelling choices are not obv
 
 ### First Stage Regression
 
-I run the following regression for with the unadjusted and recentered instruments on the right-hand side.
+I run the following regression with the unadjusted and recentered instruments on the right-hand side.
 $$ \large
 \text{Treatment}_{c} 
 = \pi_{0} + \pi_{1}\text{Instrument}_{c} 
@@ -345,7 +355,7 @@ You can see these regression tables here:
 # IV Estimates of the Employment Growth Regression
 
 
-Let's now revisit our regression model, using the recentered instrument to instrument for $Treatment_{c}$
+Let's now revisit our regression model, using the recentered instrument to instrument for $\text{Treatment}_{c}$
 
 ::: {style="font-size: 1.25em;"}
 $$
@@ -371,7 +381,7 @@ Here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ 
 
 And here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where agriculture accounted for less than 20% of employment in 1950 [@cr-lowAgPlot].
 
-This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away due to the lower transportation costs - maybe it's easier to move a factory or an office than to move to a farm. [@cr-lowAgPlot]
+This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away after Interstate access reduced transportation costs - maybe it's easier to move a factory or an office to a denser area than it is to move to a farm. [@cr-lowAgPlot]
 
 In the following section, I test for and examine this heterogeneity further. [@cr-lowAgPlot]
 
@@ -402,4 +412,37 @@ In the following section, I test for and examine this heterogeneity further. [@c
 :::: 
 :::
 
+# Heterogeneity Across Agriculture Dependence
+
+Splitting the the sample into high vs low agriculture groups pointed to effect heterogeneity but to formally test for this heterogeneity and to more closely examine the dynamics, I set up a different regression specification.
+
+To capture dynamic effects with total flexibility, without worrying about statistical power, I estimate a separate regression for each year $t \in \{1970, ..., 2016\}$ For each year $t$, I estimate the following specification, with counties indexed by $c$:
+
+<br>
+
+$$
+\log(Y_{c, t}) - \log(Y_{c,1953}) 
+= \beta_{0,t} + \beta_{1,t}\text{Treatment}_{c} + \beta_{2,t}\text{Treatment}_{c} \times \text{High Ag}_{c} + \beta_{3,t}\text{High Ag}_{c} 
++ X_{c}\gamma_{t} + \varepsilon_{c, t}
+$$
+<br>
+
+::: {.info-block}
+### &#10068; How is this different? 
+
+This differs from fitting the previous regression separately for high- and low-agriculture groups because:
+
+- I estimate coefficients separately by year, so each regression uses N = 2,769 counties.
+
+- $\gamma_{t}$, the weight on pre-Interstate characteristics, can now vary by year $t$ rather than being fixed within each period $\tau$.
+
+- The regression produces estimates and standard errors for $\beta_{2,t}$, allowing direct statistical tests of heterogeneity.
+
+- To use $\text{RecenteredIV}_{c}$, I check that the [first stage is strong](firstStageInteracted.html) and that the [exclusion restriction holds](exclusionInteracted.html) for the interacted instrument.
+
+:::
+
+
 [WEBSITE UNDER CONSTRUCTION]
+
+

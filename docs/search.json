@@ -33,5 +33,19 @@
     "title": "",
     "section": "",
     "text": "Recentered IV does not predict other pre-Interstate county characteristics\n\nFor \\(x_{c} \\in \\{ \\text{Population Density}_{c, 1940}, \\text{Log House Value}_{c, 1940}, \\text{Market Potential}_{c, 1950}\\}\\) and \\(\\text{Interstate Variable}_{c} \\in \\{ \\text{Treatment}_{c}, \\text{Recentered IV}_{c}\\}\\) I run the following regression:\n\\[\nx_{c} = \\beta_{0} + \\beta_{1}\\,\\text{Interstate Variable}_{c} + \\varepsilon_{c}\n\\]\n\n\n\n\n\nGo back"
+  },
+  {
+    "objectID": "firstStageInteracted.html",
+    "href": "firstStageInteracted.html",
+    "title": "",
+    "section": "",
+    "text": "Cols (1) and (2):\n\\[\n\\text{Treatment}_{c} = \\pi_{0} + \\pi_{1}\\text{RecenteredIV}_{c}\n+ \\pi_{2}\\text{HighAg}_{c} + X_{c}\\pi_{3} + \\varepsilon_{c}\n\\]\nCols (3) and (4):\n\\[\n\\text{Treatment}_{c}\\times\\text{HighAg}_{c}\n= \\pi_{0} + \\pi_{1}(\\text{RecenteredIV}_{c}\\times\\text{HighAg}_{c})\n+ \\pi_{2}\\text{RecenteredIV}_{c} + \\pi_{3}\\text{HighAg}_{c}\n+ X_{c}\\pi_{4} + \\varepsilon_{c}\n\\]\n\n\n\n\n\nGo back"
+  },
+  {
+    "objectID": "exclusionInteracted.html",
+    "href": "exclusionInteracted.html",
+    "title": "",
+    "section": "",
+    "text": "(Recentered IV x High Ag Indicator) does not predict other pre-Interstate county characteristics\n\nFor \\(x_{c} \\in \\{ \\text{Population Density}_{c, 1940}, \\text{Log House Value}_{c, 1940}, \\text{Market Potential}_{c, 1950}\\}\\)\n\\[\nx_{c} = \\beta_{0} + \\beta_{1}(\\text{RecenteredIV}_{c}\\times \\text{High Ag}_{c}) + \\beta_{2}\\text{RecenteredIV}_{c} + \\varepsilon_{c}\n\\]\n\n\n\n\n\nNote: I am not worried about that \\(*\\). If the interacted instrument is truly uncorrelated with counties’ potential outcomes, 1 in 10 tests for this will be rejected at the 10% significance level, by construction of hypothesis testing.\nGo back\n\n[WEBSITE UNDER CONSTRUCTION]"
   }
 ]

@@ -1,0 +1,26 @@
+
+
+
+
+::: {.exclusion-block}
+
+**Cols (1) and (2):**  
+$$
+\text{Treatment}_{c} = \pi_{0} + \pi_{1}\text{RecenteredIV}_{c} 
++ \pi_{2}\text{HighAg}_{c} + X_{c}\pi_{3} + \varepsilon_{c}
+$$
+
+**Cols (3) and (4):**  
+$$
+\text{Treatment}_{c}\times\text{HighAg}_{c} 
+= \pi_{0} + \pi_{1}(\text{RecenteredIV}_{c}\times\text{HighAg}_{c}) 
++ \pi_{2}\text{RecenteredIV}_{c} + \pi_{3}\text{HighAg}_{c} 
++ X_{c}\pi_{4} + \varepsilon_{c}
+$$
+
+
+
+![](images/firstStage/firstStage-interacted.png){width="90%" fig-align="center"}
+
+[Go back](index.html#how-is-this-different)
+:::

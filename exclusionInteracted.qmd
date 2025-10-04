@@ -1,0 +1,23 @@
+::: {.exclusion-block}
+
+##### <u>**(Recentered IV x High Ag Indicator) does not predict other pre-Interstate county characteristics**</u>
+
+<br>
+
+
+For $x_{c} \in \{ \text{Population Density}_{c, 1940}, \text{Log House Value}_{c, 1940}, \text{Market Potential}_{c, 1950}\}$
+
+
+$$
+x_{c} = \beta_{0} + \beta_{1}(\text{RecenteredIV}_{c}\times \text{High Ag}_{c}) + \beta_{2}\text{RecenteredIV}_{c} + \varepsilon_{c}
+$$
+
+![](images/exclusion/preInterstateCharacteristicsInteracted.png){width="100%" fig-align="center"}
+
+<small>Note: I am not worried about that $*$. If the interacted instrument is truly uncorrelated with counties' potential outcomes, 1 in 10 tests for this will be rejected at the 10\% significance level, by construction of hypothesis testing.</small>
+
+[Go back](index.html#how-is-this-different)
+
+:::
+
+[WEBSITE UNDER CONSTRUCTION]

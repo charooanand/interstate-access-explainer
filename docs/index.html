@@ -122,6 +122,7 @@ window.Quarto = {
   <li><a href="#construction-of-instrument" id="toc-construction-of-instrument" class="nav-link" data-scroll-target="#construction-of-instrument">Construction of Instrument</a></li>
   <li><a href="#validity-of-instrument" id="toc-validity-of-instrument" class="nav-link" data-scroll-target="#validity-of-instrument">Validity of Instrument</a></li>
   <li><a href="#iv-estimates-of-the-employment-growth-regression" id="toc-iv-estimates-of-the-employment-growth-regression" class="nav-link" data-scroll-target="#iv-estimates-of-the-employment-growth-regression">IV Estimates of the Employment Growth Regression</a></li>
+  <li><a href="#heterogeneity-across-agriculture-dependence" id="toc-heterogeneity-across-agriculture-dependence" class="nav-link" data-scroll-target="#heterogeneity-across-agriculture-dependence">Heterogeneity Across Agriculture Dependence</a></li>
   </ul>
 </nav>
     </div>
@@ -130,12 +131,12 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-border-radius: 5px;
---cr-narrative-overlay-max-width: 30%;
+          --cr-narrative-outer-margin: 25%;
 --cr-section-background-color: white;
---cr-narrative-outer-margin: 25%;
---cr-narrative-text-color-overlay: black;
+--cr-narrative-overlay-max-width: 30%;
 --cr-narrative-background-color-overlay: #fcfcfc;
+--cr-narrative-border-radius: 5px;
+--cr-narrative-text-color-overlay: black;
         }
       </style>
     
@@ -164,6 +165,14 @@ window.Quarto = {
 </div>
 </div>
 </section>
+<div class="info-block">
+<p>🔍 <strong>Key Findings</strong></p>
+<ul>
+<li><p>Over the last century, most job growth has occurred in counties connected to the Interstate system.</p></li>
+<li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties are non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument, I use predicted counterfactual networks to recover quasi-experimental variation from this planning shock.</p></li>
+<li><p>Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
+</ul>
+</div>
 <section id="raw-data-employment-growth-regression" class="level1">
 <h1>Raw Data &amp; Employment Growth Regression</h1>
 <section id="raw-employment-growth-data" class="level3">
@@ -318,7 +327,7 @@ window.Quarto = {
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="2" data-focus-on="cr-ike" data-pan-to="0%,-30%">
+<div class="trigger new-trigger" data-scale-by="2" data-pan-to="0%,-30%" data-focus-on="cr-ike">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -463,7 +472,7 @@ window.Quarto = {
 <div class="narrative-col">
 <div class="trigger new-trigger" data-focus-on="cr-basemap">
 <div class="narrative">
-<p>I extend this idea to construct a recentered instrument for <span class="math inline">\(Treatment_c\)</span>, the indicator for a county being within 25km of an Interstate highway.</p>
+<p>I extend this idea to construct a recentered instrument for <span class="math inline">\(\text{Treatment}_c\)</span>, the indicator for a county being within 25km of an Interstate highway.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-compliersAndAlwaysTakersMap">
@@ -478,7 +487,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-unadjustedIV">
 <div class="narrative">
-<p>Analogous to the <em>actual treatment</em> stylized example, an <span class="math inline">\(UnadjustedIV_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of <span class="math inline">\(Treatment_c\)</span>.</p>
+<p>Analogous to the <em>actual treatment</em> stylized example, an <span class="math inline">\(\text{UnadjustedIV}_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of <span class="math inline">\(\text{Treatment}_c\)</span>.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-counterfactualBetaSkeletons">
@@ -534,7 +543,7 @@ window.Quarto = {
 <h1>Validity of Instrument</h1>
 <section id="first-stage-regression" class="level3">
 <h3 class="anchored" data-anchor-id="first-stage-regression">First Stage Regression</h3>
-<p>I run the following regression for with the unadjusted and recentered instruments on the right-hand side. <span class="math display">\[ \large
+<p>I run the following regression with the unadjusted and recentered instruments on the right-hand side. <span class="math display">\[ \large
 \text{Treatment}_{c}
 = \pi_{0} + \pi_{1}\text{Instrument}_{c}
 + X_{c}\pi_2 + \varepsilon_{c}
@@ -560,7 +569,7 @@ window.Quarto = {
 </section>
 <section id="iv-estimates-of-the-employment-growth-regression" class="level1">
 <h1>IV Estimates of the Employment Growth Regression</h1>
-<p>Let’s now revisit our regression model, using the recentered instrument to instrument for <span class="math inline">\(Treatment_{c}\)</span></p>
+<p>Let’s now revisit our regression model, using the recentered instrument to instrument for <span class="math inline">\(\text{Treatment}_{c}\)</span></p>
 <div style="font-size: 1.25em;">
 <p><span class="math display">\[
 \log(Y_{c, t}) - \log(Y_{c,1953})
@@ -606,7 +615,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
 <div class="narrative">
-<p>This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away due to the lower transportation costs - maybe it’s easier to move a factory or an office than to move to a farm.</p>
+<p>This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away after Interstate access reduced transportation costs - maybe it’s easier to move a factory or an office to a denser area than it is to move to a farm.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
@@ -645,6 +654,27 @@ Low Agriculture Counties
 </div>
 </div>
 </div>
+</section>
+<section id="heterogeneity-across-agriculture-dependence" class="level1">
+<h1>Heterogeneity Across Agriculture Dependence</h1>
+<p>Splitting the the sample into high vs low agriculture groups pointed to effect heterogeneity but to formally test for this heterogeneity and to more closely examine the dynamics, I set up a different regression specification.</p>
+<p>To capture dynamic effects with total flexibility, without worrying about statistical power, I estimate a separate regression for each year <span class="math inline">\(t \in \{1970, ..., 2016\}\)</span> For each year <span class="math inline">\(t\)</span>, I estimate the following specification, with counties indexed by <span class="math inline">\(c\)</span>:</p>
+<p><br></p>
+<p><span class="math display">\[
+\log(Y_{c, t}) - \log(Y_{c,1953})
+= \beta_{0,t} + \beta_{1,t}\text{Treatment}_{c} + \beta_{2,t}\text{Treatment}_{c} \times \text{High Ag}_{c} + \beta_{3,t}\text{High Ag}_{c}
++ X_{c}\gamma_{t} + \varepsilon_{c, t}
+\]</span> <br></p>
+<section id="how-is-this-different" class="level3 info-block">
+<h3 class="anchored" data-anchor-id="how-is-this-different">❔ How is this different?</h3>
+<p>This differs from fitting the previous regression separately for high- and low-agriculture groups because:</p>
+<ul>
+<li><p>I estimate coefficients separately by year, so each regression uses N = 2,769 counties.</p></li>
+<li><p><span class="math inline">\(\gamma_{t}\)</span>, the weight on pre-Interstate characteristics, can now vary by year <span class="math inline">\(t\)</span> rather than being fixed within each period <span class="math inline">\(\tau\)</span>.</p></li>
+<li><p>The regression produces estimates and standard errors for <span class="math inline">\(\beta_{2,t}\)</span>, allowing direct statistical tests of heterogeneity.</p></li>
+<li><p>To use <span class="math inline">\(\text{RecenteredIV}_{c}\)</span>, I check that the <a href="firstStageInteracted.html">first stage is strong</a> and that the <a href="exclusionInteracted.html">exclusion restriction holds</a> for the interacted instrument.</p></li>
+</ul>
+</section>
 <p>[WEBSITE UNDER CONSTRUCTION]</p>
 
 
