@@ -30,7 +30,7 @@ In this project, I estimate the causal effect of Interstate access on county emp
 
 
 ::: {.info-block}
-&#128269; **Summary**
+&#128269; **Summary**  
 
 - Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.
 
@@ -378,11 +378,13 @@ Perhaps, the confidence intervals widen over time because counties gaining Inter
 
 I examine reasons why counties may evolve differently in response to Interstate access and the one that stands out is the pre-Interstate dependence on agriculture. [@cr-ivPooledPlot]
 
-Here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where agriculture accounted for more than 20% of employment in 1950 [@cr-highAgPlot].
+I use historic Census occupation counts to compute a primary sector share of employment in 1950. In practice, primary sector labor is mostly agricultural so I use this as a proxy for counties' agricultural share of employment. [@cr-ivPooledPlot]
 
-And here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where agriculture accounted for less than 20% of employment in 1950 [@cr-lowAgPlot].
+Here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where the primary sector accounted for more than 20% of employment in 1950. [@cr-highAgPlot].
 
-This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away after Interstate access reduced transportation costs - maybe it's easier to move a factory or an office to a denser area than it is to move to a farm. [@cr-lowAgPlot]
+And here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where the primary sector accounted for less than 20% of employment in 1950 [@cr-lowAgPlot].
+
+This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. [@cr-lowAgPlot]
 
 In the following section, I test for and examine this heterogeneity further. [@cr-lowAgPlot]
 
@@ -423,7 +425,7 @@ To capture dynamic effects with total flexibility, I estimate a separate regress
 
 $$
 \log(Y_{c, t}) - \log(Y_{c,1953}) 
-= \beta_{0,t} + \beta_{1,t}\text{Treatment}_{c} + \beta_{2,t}\text{Treatment}_{c} \times \text{High Ag}_{c} + \beta_{3,t}\text{High Ag}_{c} 
+= \beta_{0,t} + \beta_{1,t}\text{Treatment}_{c} + \beta_{2,t} ( \text{Treatment}_{c} \times \text{High Ag}_{c}) + \beta_{3,t}\text{High Ag}_{c} 
 + X_{c}\gamma_{t} + \varepsilon_{c, t}
 $$
 <br>
@@ -444,6 +446,64 @@ This differs from fitting the previous regression separately for high- and low-a
 :::
 
 
-[WEBSITE UNDER CONSTRUCTION]
+:::: {.cr-section layout="overlay-right"}
 
+Here are the coefficient estimates for some of the years $t$. $\beta_{1,t}$ captures the effect of Interstate access on employment growth between 1953-$t$ for low agriculture counties. $\beta_{1,t}+\beta_{2,t}$ captures the same for high agriculture counties. [@cr-table1]
+
+The $\beta_{1,t}^{OLS}$ coefficients start small and increase steadily over time, consistent with the growth we saw in the raw data plot. In contrast, $\beta_{2,t}^{OLS}$ remains close to zero, indicating that the treatment–control gap is similar across the high- and low-agriculture subsamples. [@cr-table2]
+
+The Recentered IV columns report the 2SLS estimates and reflect a local average treatment effect of Interstate access. The $\beta_{1,t}$ coefficients remains close to zero, which implies that, in this natural experiment, Interstate access had no effect on employment growth in low-agriculture counties. The entire effect is concentrated in high-agriculture counties, corresponding to positive and significant $\beta_{2,t}$ estimates. [@cr-table3]
+
+Furthermore, $\beta_{2,t}$ starts at a high magnitude and increases rapidly over the years. This suggests that in high-agriculture counties there was a big, short-run impact on employment growth that persisted and, perhaps, spurred agglomerations. [@cr-table3]
+
+
+
+::: {#cr-table1}
+![](images/heterogeneity/1.png){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-table2}
+![](images/heterogeneity/2.png){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::: {#cr-table3}
+![](images/heterogeneity/3.png){width="40%" style="margin-left: 30px; display: block; margin-right: auto;"}
+:::
+
+::::
+
+
+### Possible explanations for this heterogeneity 
+
+One possibility is that Interstate access accelerated industrialization in counties that were initially dependent on agriculture. Alternatively, lower transport costs may have reinforced agricultural specialization rather than diversification.
+
+I cannot find clear evidence for Interstates inducing big sectoral shifts. The instrument is too weak to identify causal effects on sectoral composition, but simple treatment–control comparisons show similar long-run declines in primary-sector employment across groups. Interstate access did not appear to accelerate the transition out of agriculture.
+
+If Interstate access made high-agriculture counties grow larger, but not more industrial, a plausible explanation for this heterogeneity is that farm-related jobs are less mobile. Farms are more likely to remain local after transport costs fall, whereas factories or offices can relocate more easily toward denser areas.
+
+<div style="width:75%; margin:auto;">
+
+|                               | Treatment Counties | Control Counties |
+|-------------------------------|--------------------|------------------|
+| Primary sector share 1950     | 0.39 (0.0052)      | 0.44 (0.0037)    |
+| Primary sector share 1990     | 0.07 (0.0023)      | 0.12 (0.0026)    |
+| Change in primary share 1950–1990 | -0.31 (0.0046)  | -0.32 (0.0033)   |
+
+</div>
+
+
+<br>
+<br>
+
+::: {.info-block}
+&#128269; **Summary, again**  
+
+- Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.
+
+- Of course, highways were not placed at random. The Interstate system was planned to connect metropolitan areas, so this comparison reflects selection bias. These trajectories could be driven by concurrent forces of urbanization rather than by Interstate access itself.
+
+- From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak & Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.
+
+- Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.
+:::
 

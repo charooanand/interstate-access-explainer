@@ -132,11 +132,11 @@ window.Quarto = {
       <style>
         :root {
           --cr-narrative-text-color-overlay: black;
+--cr-narrative-overlay-max-width: 30%;
+--cr-narrative-background-color-overlay: #fcfcfc;
 --cr-narrative-border-radius: 5px;
 --cr-section-background-color: white;
---cr-narrative-overlay-max-width: 30%;
 --cr-narrative-outer-margin: 25%;
---cr-narrative-background-color-overlay: #fcfcfc;
         }
       </style>
     
@@ -327,7 +327,7 @@ window.Quarto = {
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-ike" data-pan-to="0%,-30%" data-scale-by="2">
+<div class="trigger new-trigger" data-focus-on="cr-ike" data-scale-by="2" data-pan-to="0%,-30%">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -603,19 +603,24 @@ window.Quarto = {
 <p>I examine reasons why counties may evolve differently in response to Interstate access and the one that stands out is the pre-Interstate dependence on agriculture.</p>
 </div>
 </div>
+<div class="trigger new-trigger" data-focus-on="cr-ivPooledPlot">
+<div class="narrative">
+<p>I use historic Census occupation counts to compute a primary sector share of employment in 1950. In practice, primary sector labor is mostly agricultural so I use this as a proxy for counties’ agricultural share of employment.</p>
+</div>
+</div>
 <div class="trigger new-trigger" data-focus-on="cr-highAgPlot">
 <div class="narrative">
-<p>Here are the <span class="math inline">\(\widehat{\beta}{1,\tau}^{IV}\)</span> and <span class="math inline">\(\widehat{\beta}{1,\tau}^{OLS}\)</span> estimates for counties where agriculture accounted for more than 20% of employment in 1950</p>
+<p>Here are the <span class="math inline">\(\widehat{\beta}{1,\tau}^{IV}\)</span> and <span class="math inline">\(\widehat{\beta}{1,\tau}^{OLS}\)</span> estimates for counties where the primary sector accounted for more than 20% of employment in 1950.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
 <div class="narrative">
-<p>And here are the <span class="math inline">\(\widehat{\beta}{1,\tau}^{IV}\)</span> and <span class="math inline">\(\widehat{\beta}{1,\tau}^{OLS}\)</span> estimates for counties where agriculture accounted for less than 20% of employment in 1950</p>
+<p>And here are the <span class="math inline">\(\widehat{\beta}{1,\tau}^{IV}\)</span> and <span class="math inline">\(\widehat{\beta}{1,\tau}^{OLS}\)</span> estimates for counties where the primary sector accounted for less than 20% of employment in 1950</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
 <div class="narrative">
-<p>This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. One reason for this could be that those agriculture jobs are more tied to those locations and less likely to move away after Interstate access reduced transportation costs - maybe it’s easier to move a factory or an office to a denser area than it is to move to a farm.</p>
+<p>This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-lowAgPlot">
@@ -662,7 +667,7 @@ Low Agriculture Counties
 <p><br></p>
 <p><span class="math display">\[
 \log(Y_{c, t}) - \log(Y_{c,1953})
-= \beta_{0,t} + \beta_{1,t}\text{Treatment}_{c} + \beta_{2,t}\text{Treatment}_{c} \times \text{High Ag}_{c} + \beta_{3,t}\text{High Ag}_{c}
+= \beta_{0,t} + \beta_{1,t}\text{Treatment}_{c} + \beta_{2,t} ( \text{Treatment}_{c} \times \text{High Ag}_{c}) + \beta_{3,t}\text{High Ag}_{c}
 + X_{c}\gamma_{t} + \varepsilon_{c, t}
 \]</span> <br></p>
 <section id="how-is-this-different" class="level3 info-block">
@@ -675,9 +680,94 @@ Low Agriculture Counties
 <li><p>To use <span class="math inline">\(\text{RecenteredIV}_{c}\)</span>, I check that the <a href="firstStageInteracted.html">first stage is strong</a> and that the <a href="exclusionInteracted.html">exclusion restriction holds</a> for the interacted instrument.</p></li>
 </ul>
 </section>
-<p>[WEBSITE UNDER CONSTRUCTION]</p>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-table1">
+<div class="narrative">
+<p>Here are the coefficient estimates for some of the years <span class="math inline">\(t\)</span>. <span class="math inline">\(\beta_{1,t}\)</span> captures the effect of Interstate access on employment growth between 1953-<span class="math inline">\(t\)</span> for low agriculture counties. <span class="math inline">\(\beta_{1,t}+\beta_{2,t}\)</span> captures the same for high agriculture counties.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-table2">
+<div class="narrative">
+<p>The <span class="math inline">\(\beta_{1,t}^{OLS}\)</span> coefficients start small and increase steadily over time, consistent with the growth we saw in the raw data plot. In contrast, <span class="math inline">\(\beta_{2,t}^{OLS}\)</span> remains close to zero, indicating that the treatment–control gap is similar across the high- and low-agriculture subsamples.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-table3">
+<div class="narrative">
+<p>The Recentered IV columns report the 2SLS estimates and reflect a local average treatment effect of Interstate access. The <span class="math inline">\(\beta_{1,t}\)</span> coefficients remains close to zero, which implies that, in this natural experiment, Interstate access had no effect on employment growth in low-agriculture counties. The entire effect is concentrated in high-agriculture counties, corresponding to positive and significant <span class="math inline">\(\beta_{2,t}\)</span> estimates.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-table3">
+<div class="narrative">
+<p>Furthermore, <span class="math inline">\(\beta_{2,t}\)</span> starts at a high magnitude and increases rapidly over the years. This suggests that in high-agriculture counties there was a big, short-run impact on employment growth that persisted and, perhaps, spurred agglomerations.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-table1" class="sticky">
+<p><img src="images/heterogeneity/1.png" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-table2" class="sticky">
+<p><img src="images/heterogeneity/2.png" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+<div id="cr-table3" class="sticky">
+<p><img src="images/heterogeneity/3.png" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
+</div>
+</div>
+</div>
+</div>
+<section id="possible-explanations-for-this-heterogeneity" class="level3">
+<h3 class="anchored" data-anchor-id="possible-explanations-for-this-heterogeneity">Possible explanations for this heterogeneity</h3>
+<p>One possibility is that Interstate access accelerated industrialization in counties that were initially dependent on agriculture. Alternatively, lower transport costs may have reinforced agricultural specialization rather than diversification.</p>
+<p>I cannot find clear evidence for Interstates inducing big sectoral shifts. The instrument is too weak to identify causal effects on sectoral composition, but simple treatment–control comparisons show similar long-run declines in primary-sector employment across groups. Interstate access did not appear to accelerate the transition out of agriculture.</p>
+<p>If Interstate access made high-agriculture counties grow larger, but not more industrial, a plausible explanation for this heterogeneity is that farm-related jobs are less mobile. Farms are more likely to remain local after transport costs fall, whereas factories or offices can relocate more easily toward denser areas.</p>
+<div style="width:75%; margin:auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 28%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Treatment Counties</th>
+<th>Control Counties</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Primary sector share 1950</td>
+<td>0.39 (0.0052)</td>
+<td>0.44 (0.0037)</td>
+</tr>
+<tr class="even">
+<td>Primary sector share 1990</td>
+<td>0.07 (0.0023)</td>
+<td>0.12 (0.0026)</td>
+</tr>
+<tr class="odd">
+<td>Change in primary share 1950–1990</td>
+<td>-0.31 (0.0046)</td>
+<td>-0.32 (0.0033)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br> <br></p>
+<div class="info-block">
+<p>🔍 <strong>Summary, again</strong></p>
+<ul>
+<li><p>Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.</p></li>
+<li><p>Of course, highways were not placed at random. The Interstate system was planned to connect metropolitan areas, so this comparison reflects selection bias. These trajectories could be driven by concurrent forces of urbanization rather than by Interstate access itself.</p></li>
+<li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.</p></li>
+<li><p>Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
+</ul>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
