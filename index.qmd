@@ -507,3 +507,13 @@ If Interstate access made high-agriculture counties grow larger, but not more in
 - Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.
 :::
 
+
+```{=html}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (isMobile) {
+    alert("Hey there - thank you for visiting! This site works best on desktop.");
+  }
+});
+</script>
