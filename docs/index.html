@@ -119,7 +119,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#raw-data-employment-growth-regression" id="toc-raw-data-employment-growth-regression" class="nav-link active" data-scroll-target="#raw-data-employment-growth-regression">Raw Data &amp; Employment Growth Regression</a></li>
-  <li><a href="#construction-of-instrument" id="toc-construction-of-instrument" class="nav-link" data-scroll-target="#construction-of-instrument">Construction of Instrument</a></li>
+  <li><a href="#constructing-an-instrument-to-control-for-selection" id="toc-constructing-an-instrument-to-control-for-selection" class="nav-link" data-scroll-target="#constructing-an-instrument-to-control-for-selection">Constructing an Instrument to Control for Selection</a></li>
   <li><a href="#validity-of-instrument" id="toc-validity-of-instrument" class="nav-link" data-scroll-target="#validity-of-instrument">Validity of Instrument</a></li>
   <li><a href="#iv-estimates-of-the-employment-growth-regression" id="toc-iv-estimates-of-the-employment-growth-regression" class="nav-link" data-scroll-target="#iv-estimates-of-the-employment-growth-regression">IV Estimates of the Employment Growth Regression</a></li>
   <li><a href="#heterogeneity-across-agriculture-dependence" id="toc-heterogeneity-across-agriculture-dependence" class="nav-link" data-scroll-target="#heterogeneity-across-agriculture-dependence">Heterogeneity Across Agriculture Dependence</a></li>
@@ -131,12 +131,12 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-outer-margin: 25%;
---cr-narrative-text-color-overlay: black;
+          --cr-narrative-background-color-overlay: #fcfcfc;
+--cr-narrative-outer-margin: 25%;
 --cr-narrative-border-radius: 5px;
+--cr-narrative-text-color-overlay: black;
 --cr-narrative-overlay-max-width: 30%;
 --cr-section-background-color: white;
---cr-narrative-background-color-overlay: #fcfcfc;
         }
       </style>
     
@@ -149,12 +149,13 @@ window.Quarto = {
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><br> The <strong>Federal-Aid Highway Act of 1956</strong> created the 41,000-mile Interstate system — the largest public works project in U.S. history.</p>
-<p>Like most major infrastructure projects, it came with promises of economic development.</p>
-<p>In this project, I estimate the causal effect of Interstate access on county employment growth using a new design-based instrumental variable.</p>
+<p><br> The <strong>Federal-Aid Highway Act of 1956</strong> created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.</p>
+<p>I develop a new design-based instrumental variable using an overlooked planning quirk that shaped counties’ Interstate access. Leveraging this, I estimate the causal effect of Interstate access on county employment growth.</p>
+<p>I find that, among counties that as-good-as-randomly gained Interstate access, employment only increased where agriculture was initially important.</p>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
+<p><br></p>
 <div class="quarto-figure quarto-figure-center" style="float: right; margin-left: 5em; width:100%">
 <figure class="figure">
 <p><img src="images/Alaskan-Way-Viaduct-Seattle-1967.jpg" class="img-fluid figure-img"></p>
@@ -164,15 +165,6 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<div class="info-block">
-<p>🔍 <strong>Summary</strong></p>
-<ul>
-<li><p>Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.</p></li>
-<li><p>Of course, highways were not placed at random. The Interstate system was planned to connect metropolitan areas, so this comparison reflects selection bias. These trajectories could be driven by concurrent forces of urbanization rather than by Interstate access itself.</p></li>
-<li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.</p></li>
-<li><p>Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
-</ul>
-</div>
 <section id="raw-data-employment-growth-regression" class="level1">
 <h1>Raw Data &amp; Employment Growth Regression</h1>
 <section id="raw-employment-growth-data" class="level3">
@@ -181,7 +173,7 @@ window.Quarto = {
 <div class="narrative-col">
 <div class="trigger new-trigger" data-focus-on="cr-fullSampleEmpLevels">
 <div class="narrative">
-<p>In recent work, Dustin Frye assembles a new and wonderfully frequent county-level employment panel, which is invaluable for this research. He creates this panel by compiling data from the Census Bureau’s County Business Patterns (CBP) across three different sources. The marker shape denotes the CBP source. Data points denoted by × are hand-collected from archives, ● are from ICPSR and ○ are from data published by the US Census Bureau.</p>
+<p>I use a county-level panel of employment counts that Dustin Frye compiled from multiple CBP sources. Points denoted by × are hand-collected from archives, ● are from ICPSR and ○ are from data published by the US Census Bureau.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-splitEmpLevels">
@@ -196,16 +188,22 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-splitEmpLevels">
 <div class="narrative">
-<p>Before thinking about the causal effect of Interstate access, I specify a regression model to capture the divergence between treatment and control counties. In the analysis that follows, I exclude the early outliers from decennial years, which appear inconsistent with other sources.</p>
+<p>As a first step, I specify a regression model to capture the divergence between treatment and control counties. In the analysis that follows, I exclude the early outliers from decennial years, which appear inconsistent with other sources.</p>
 </div>
 </div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
 <div id="cr-fullSampleEmpLevels" class="sticky">
+<p style="margin-left: 15%;">
+Growth in County-Level Employment
+</p>
 <p><img src="images/rawGrowthRates/fullSampleEmpLevels.jpeg" class="img-fluid" style="padding:5px; margin-left: 40px;;width:40.0%"> <img src="images/rawGrowthRates/blankLegendSpace.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
 </div>
 <div id="cr-splitEmpLevels" class="sticky">
+<p style="margin-left: 15%;">
+Growth in County-Level Employment
+</p>
 <p><img src="images/rawGrowthRates/empLevels.jpeg" class="img-fluid" style="padding:5px; margin-left: 40px;;width:40.0%"> <img src="images/rawGrowthRates/levelsLegend.jpeg" class="img-fluid" style="margin-left: 30px; display: block; margin-right: auto;;width:40.0%"></p>
 </div>
 </div>
@@ -313,13 +311,18 @@ window.Quarto = {
 </div>
 </section>
 </section>
-<section id="construction-of-instrument" class="level1">
-<h1>Construction of Instrument</h1>
+<section id="constructing-an-instrument-to-control-for-selection" class="level1">
+<h1>Constructing an Instrument to Control for Selection</h1>
 <div class="cr-section cr-column-screen overlay-right">
 <div class="narrative-col">
 <div class="trigger new-trigger" data-focus-on="cr-ike">
 <div class="narrative">
-<p>Due to selection bias, OLS estimates of <span class="math inline">\(\beta_{1, \tau}\)</span> might differ from the causal effect on Interstate access. To address this bias, I find an <em>instrumental variable</em> (IV) for <span class="math inline">\(\text{Treatment}_{c}\)</span>. In other words, I construct a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth.</p>
+<p>Due to selection bias, OLS estimates of <span class="math inline">\(\beta_{1, \tau}\)</span> might differ from the causal effect on Interstate access. To address this bias, I find an <em>instrumental variable</em> (IV) for <span class="math inline">\(\text{Treatment}_{c}\)</span>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-ike">
+<div class="narrative">
+<p>That is, I construct a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ike">
@@ -327,7 +330,7 @@ window.Quarto = {
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-pan-to="0%,-30%" data-scale-by="2" data-focus-on="cr-ike">
+<div class="trigger new-trigger" data-focus-on="cr-ike" data-scale-by="2" data-pan-to="0%,-30%">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -371,13 +374,12 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p><br></p>
 </section>
 <section id="testing-for-a-discontinuity" class="level3">
 <h3 class="anchored" data-anchor-id="testing-for-a-discontinuity">Testing for a Discontinuity</h3>
-<p><br></p>
-<p>I overlay 1940 counties with the Interstate system and, by bins of log 1940 population, compute the share of counties intersected by a highway. The probability of receiving an Interstate jumps by about 20 percentage points at the 50,000 population cutoff.</p>
-<p>Additionally, other county characteristics and the density of counties remain smooth at this cutoff, which suggests that this is a natural experiment. Near the cutoff, there is a set of counties that shared similar potential outcomes, on average. However, for a random reason, only some of them gained Interstate access.</p>
-<p>This looks like a promising fuzzy RD design but, because it uses only counties near the cutoff, estimates are too underpowered to learn anything. So, what <em>can</em> we learn from this natural experiment?</p>
+<p>I overlay county boundaries from the 1940 Census with the Interstate system. Then, within bins of the log 1940 population, I compute the share of counties intersected by a highway. The probability of receiving an Interstate jumps by about 20 percentage points at the 50,000 population cutoff.</p>
+<p>Additionally, other county characteristics and the density of counties remain smooth at this cutoff, which suggests that this is a natural experiment. Near the cutoff, there is a set of counties that shared similar potential outcomes, on average. However, for a random reason, only some of them gained Interstate access. This looks like a promising fuzzy RD design but, because it uses only counties near the cutoff, estimates are too underpowered to learn anything. So, what <em>can</em> we learn from this natural experiment?</p>
 <div class="columns center-cols">
 <div class="column" style="width:40%;">
 <p><img src="images/rdd/connectedFull.jpeg" class="img-fluid"></p>
@@ -410,7 +412,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-network1">
 <div class="narrative">
-<p>After seeing the populations of the red hubs, planners build this network to efficiently connect hubs. Consequently, the grey counties are treated.</p>
+<p>After seeing the populations of the red hubs, planners build this highway network to efficiently connect hubs. Consequently, the grey counties are treated.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-network1">
@@ -425,7 +427,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-expectedTreatment">
 <div class="narrative">
-<p>Then, to summarize the non-random component of the treatment variation driven by the cutoff, I calculate counties’ expected treatment across these counterfactuals.</p>
+<p>Then, to capture the non-random component of the treatment variation driven by the cutoff, I calculate counties’ expected treatment across these counterfactuals.</p>
 </div>
 </div>
 </div>
@@ -448,7 +450,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="why-does-this-work" class="level3 info-block">
-<h3 class="anchored" data-anchor-id="why-does-this-work">❔ Why does this work?</h3>
+<h3 class="anchored" data-anchor-id="why-does-this-work">🔧 Why does this work?</h3>
 <p>The actual treatment combines random variation (from the cutoff-driven coin flips) and systematic variation (from planning priorities). By subtracting the expected treatment from the actual treatment, we get a ‘recentered treatment’ that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.</p>
 <p>Concretely, counties with a positive recentered treatment got a highway <em>only</em> because they happened to be en route to a randomly included hub. Counties with a negative recentered treatment were missed, even though they could have been traversed in plausible counterfactual networks. That is good quasi-experimental identifying variation!</p>
 </section>
@@ -482,17 +484,17 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-ivBetaSkeleton">
 <div class="narrative">
-<p>I select red counties that did in fact have populations above 50,000 and draw a straight-line network to connect them. Specifically, I use a proximity graph to predict an engineer’s optimal network.</p>
+<p>I select red counties that did in fact have populations above 50,000 and draw a straight-line network to connect them. Specifically, I predict an engineer’s optimal network using a proximity graph.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-unadjustedIV">
 <div class="narrative">
-<p>Analogous to the <em>actual treatment</em> stylized example, an <span class="math inline">\(\text{UnadjustedIV}_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network. Lying within 25km of this predicted network is theoretically (and statistically) a good predictor of <span class="math inline">\(\text{Treatment}_c\)</span>.</p>
+<p>The <span class="math inline">\(\text{UnadjustedIV}_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network (and 0 otherwise). This is analogous to the <em>actual treatment</em> from the stylized example - it is a good predictor of <span class="math inline">\(Treatment_c\)</span> but the group of counties with <span class="math inline">\(\text{UnadjustedIV}_c = 1\)</span> contain all the big cities and important corridors.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-counterfactualBetaSkeletons">
 <div class="narrative">
-<p>Then, by permuting which red counties get targetted, I simulate 50 predicted counterfactual networks.</p>
+<p>By permuting which red counties get targetted, I simulate 50 predicted counterfactual networks.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-expectedIV">
@@ -507,7 +509,7 @@ window.Quarto = {
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-recenteredIV">
 <div class="narrative">
-<p>It was a lot of work to get here and the <em>correct</em> modelling choices are not obvious. But, ultimately, the recentered instrument is only useful if it satisfies the statistical properties of a valid instrumental variable. Recall the (testable) goal of constructing a variable that (1) predicts which counties were more likely to receive Interstate access, but (2) is not correlated with underlying location fundamentals or other unobserved factors that shape local labor market growth.</p>
+<p>In the next section I test that the recentered instrument satisfies the statistical properties of a valid instrumental variable, so that I can use it to correct for selection bias in causal estimates.</p>
 </div>
 </div>
 </div>
@@ -757,14 +759,18 @@ Low Agriculture Counties
 </div>
 <p><br> <br></p>
 <div class="info-block">
-<p>🔍 <strong>Summary, again</strong></p>
+<p>🔍 <strong>Summary</strong></p>
 <ul>
 <li><p>Since the system’s construction, employment has become more concentrated in counties connected to the Interstate network. On average, employment growth has been about one-third higher in counties with Interstate access than in those without.</p></li>
 <li><p>Of course, highways were not placed at random. The Interstate system was planned to connect metropolitan areas, so this comparison reflects selection bias. These trajectories could be driven by concurrent forces of urbanization rather than by Interstate access itself.</p></li>
 <li><p>From Interstate planning documents, I discover an overlooked natural experiment and discern that many counties were non-randomly exposed to this exogenous shock to Interstate access. Adapting Borusyak &amp; Hull’s (2023) recentered instrument framework, I use predicted counterfactual networks to isolate quasi-experimental variation from this planning shock.</p></li>
-<li><p>Among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
+<li><p>I find that, among counties between major population hubs that as-good-as-randomly gained access, Interstates increased employment only where agriculture was initially important.</p></li>
 </ul>
 </div>
+<p><br> <br></p>
+<p>Hello - thank you for visiting this site!<br>
+My name is Charoo Anand and I’m a PhD candidate at Berkeley Econ, on the job market for data scientist/economist roles.<br>
+You can reach me at charoo_anand [at] berkeley.edu and my CV is <a href="https://www.dropbox.com/scl/fi/xfwk8eqv67a47n9kp5v62/charoo_anand_cv.pdf?rlkey=yyd984ww8006ek56j88096pcp&amp;st=gluf7jc9&amp;dl=0">here</a>.</p>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
