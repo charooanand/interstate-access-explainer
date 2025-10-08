@@ -364,9 +364,9 @@ I examine reasons why counties may evolve differently in response to Interstate 
 
 I use historic Census occupation counts to compute a primary sector share of employment in 1950. In practice, primary sector labor is mostly agricultural so I use this as a proxy for counties' agricultural share of employment. [@cr-ivPooledPlot]
 
-Here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where the primary sector accounted for more than 20% of employment in 1950. [@cr-highAgPlot].
+Here are the $\widehat{\beta}_{1,\tau}^{IV}$ and $\widehat{\beta}_{1,\tau}^{OLS}$ estimates for counties where the primary sector accounted for more than 20% of employment in 1950. [@cr-highAgPlot].
 
-And here are the $\widehat{\beta}{1,\tau}^{IV}$ and $\widehat{\beta}{1,\tau}^{OLS}$ estimates for counties where the primary sector accounted for less than 20% of employment in 1950 [@cr-lowAgPlot].
+And here are the $\widehat{\beta}_{1,\tau}^{IV}$ and $\widehat{\beta}_{1,\tau}^{OLS}$ estimates for counties where the primary sector accounted for less than 20% of employment in 1950 [@cr-lowAgPlot].
 
 This suggests that, for counties situated between larger population hubs, Interstate connection increased local jobs only if agricultural employment was substantial beforehand. [@cr-lowAgPlot]
 
