@@ -1,5 +1,4 @@
 
-
 ::: {.intro-center}
 ## Interstate Access & Employment Growth: <br> Evidence from a Design-Based Instrument
 
@@ -120,7 +119,10 @@ So, with that, let’s look more closely at the planning documents. How did plan
 
 :::: {.cr-section layout="overlay-right"}
 
-These are excerpts from the 1944 report of the National Interregional Highway Committee, which outlined a plan for the future Interstate system. The section entitled *Determinants of Selection* describes that, in effect, planners picked dense, productive hubs and drew routes to connect them. Emphasis on the word *Selection*! Counties that gained Interstate access were either large and growing or happened to lie along these corridors, making treatment counties systematically different from those left out. [@cr-planningdocs]
+These are excerpts from the 1944 report of the National Interregional Highway Committee, which outlined a plan for the future Interstate system. The section entitled *Determinants of Selection* describes that, in effect, planners picked dense, productive hubs and drew routes to connect them. [@cr-planningdocs]
+
+
+Emphasis on the word *Selection*! Counties that gained Interstate access were either large and growing or happened to lie along these corridors, making treatment counties systematically different from those left out. [@cr-planningdocs]
 
 However, the map hints at an arbitrary planning shock. Planners appear to have grouped cities by their 1940 population when drawing networks, and the final plan emphasized connecting cities with populations above 50,000. [@cr-planningdocs]
 
@@ -252,7 +254,7 @@ The discontintuity implied a natural experiment; there was a set of counties nea
 
 I select red counties that did in fact have populations above 50,000 and draw a straight-line network to connect them. Specifically, I predict an engineer's optimal network using a proximity graph. [@cr-ivBetaSkeleton]
 
-The $\text{UnadjustedIV}_c$ is an indicator that equals 1 if a county is within 25km of the predicted network (and 0 otherwise). This is analogous to the _actual treatment_ from the stylized example - it is a good predictor of $Treatment_c$ but the group of counties with $\text{UnadjustedIV}_c = 1$ contain all the big cities and important corridors. [@cr-unadjustedIV]
+The $\text{UnadjustedIV}_c$ is an indicator that equals 1 if a county is within 25km of the predicted network (and 0 otherwise). This is analogous to the _actual treatment_ from the stylized example - it is a good predictor of $Treatment_c$ but the group of counties with $\text{UnadjustedIV}_c = 1$ contains all the big cities and important corridors. [@cr-unadjustedIV]
 
 By permuting which red counties get targetted, I simulate 50 predicted counterfactual networks. [@cr-counterfactualBetaSkeletons]
 
@@ -460,7 +462,7 @@ Furthermore, $\beta_{2,t}$ starts at a high magnitude and increases rapidly over
 
 One possibility is that Interstate access accelerated industrialization in counties that were initially dependent on agriculture. Alternatively, lower transport costs may have reinforced agricultural specialization rather than diversification.
 
-I cannot find clear evidence for Interstates inducing big sectoral shifts. The instrument is too weak to identify causal effects on sectoral composition, but simple treatment–control comparisons show similar long-run declines in primary-sector employment across groups. Interstate access did not appear to accelerate the transition out of agriculture.
+I cannot find clear evidence for Interstates inducing big sectoral shifts. We would need more statistical power to identify the causal effect on sector shares. However, simple treatment–control comparisons show similar long-run declines in primary-sector employment across groups. Interstate access did not appear to accelerate the transition out of agriculture.
 
 If Interstate access made high-agriculture counties grow larger, but not more industrial, a plausible explanation for this heterogeneity is that farm-related jobs are less mobile. Farms are more likely to remain local after transport costs fall, whereas factories or offices can relocate more easily toward denser areas.
 

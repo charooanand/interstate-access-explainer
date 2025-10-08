@@ -131,12 +131,12 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-background-color-overlay: #fcfcfc;
---cr-narrative-outer-margin: 25%;
---cr-narrative-border-radius: 5px;
+          --cr-section-background-color: white;
 --cr-narrative-text-color-overlay: black;
+--cr-narrative-background-color-overlay: #fcfcfc;
+--cr-narrative-border-radius: 5px;
+--cr-narrative-outer-margin: 25%;
 --cr-narrative-overlay-max-width: 30%;
---cr-section-background-color: white;
         }
       </style>
     
@@ -330,7 +330,7 @@ Growth in County-Level Employment
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-ike" data-scale-by="2" data-pan-to="0%,-30%">
+<div class="trigger new-trigger" data-focus-on="cr-ike" data-pan-to="0%,-30%" data-scale-by="2">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -355,7 +355,12 @@ Growth in County-Level Employment
 <div class="narrative-col">
 <div class="trigger new-trigger" data-focus-on="cr-planningdocs">
 <div class="narrative">
-<p>These are excerpts from the 1944 report of the National Interregional Highway Committee, which outlined a plan for the future Interstate system. The section entitled <em>Determinants of Selection</em> describes that, in effect, planners picked dense, productive hubs and drew routes to connect them. Emphasis on the word <em>Selection</em>! Counties that gained Interstate access were either large and growing or happened to lie along these corridors, making treatment counties systematically different from those left out.</p>
+<p>These are excerpts from the 1944 report of the National Interregional Highway Committee, which outlined a plan for the future Interstate system. The section entitled <em>Determinants of Selection</em> describes that, in effect, planners picked dense, productive hubs and drew routes to connect them.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-planningdocs">
+<div class="narrative">
+<p>Emphasis on the word <em>Selection</em>! Counties that gained Interstate access were either large and growing or happened to lie along these corridors, making treatment counties systematically different from those left out.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-planningdocs">
@@ -489,7 +494,7 @@ Growth in County-Level Employment
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-unadjustedIV">
 <div class="narrative">
-<p>The <span class="math inline">\(\text{UnadjustedIV}_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network (and 0 otherwise). This is analogous to the <em>actual treatment</em> from the stylized example - it is a good predictor of <span class="math inline">\(Treatment_c\)</span> but the group of counties with <span class="math inline">\(\text{UnadjustedIV}_c = 1\)</span> contain all the big cities and important corridors.</p>
+<p>The <span class="math inline">\(\text{UnadjustedIV}_c\)</span> is an indicator that equals 1 if a county is within 25km of the predicted network (and 0 otherwise). This is analogous to the <em>actual treatment</em> from the stylized example - it is a good predictor of <span class="math inline">\(Treatment_c\)</span> but the group of counties with <span class="math inline">\(\text{UnadjustedIV}_c = 1\)</span> contains all the big cities and important corridors.</p>
 </div>
 </div>
 <div class="trigger new-trigger" data-focus-on="cr-counterfactualBetaSkeletons">
@@ -722,7 +727,7 @@ Low Agriculture Counties
 <section id="possible-explanations-for-this-heterogeneity" class="level3">
 <h3 class="anchored" data-anchor-id="possible-explanations-for-this-heterogeneity">Possible explanations for this heterogeneity</h3>
 <p>One possibility is that Interstate access accelerated industrialization in counties that were initially dependent on agriculture. Alternatively, lower transport costs may have reinforced agricultural specialization rather than diversification.</p>
-<p>I cannot find clear evidence for Interstates inducing big sectoral shifts. The instrument is too weak to identify causal effects on sectoral composition, but simple treatment–control comparisons show similar long-run declines in primary-sector employment across groups. Interstate access did not appear to accelerate the transition out of agriculture.</p>
+<p>I cannot find clear evidence for Interstates inducing big sectoral shifts. We would need more statistical power to identify the causal effect on sector shares. However, simple treatment–control comparisons show similar long-run declines in primary-sector employment across groups. Interstate access did not appear to accelerate the transition out of agriculture.</p>
 <p>If Interstate access made high-agriculture counties grow larger, but not more industrial, a plausible explanation for this heterogeneity is that farm-related jobs are less mobile. Farms are more likely to remain local after transport costs fall, whereas factories or offices can relocate more easily toward denser areas.</p>
 <div style="width:75%; margin:auto;">
 <table class="caption-top table">
