@@ -3,8 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: ""
-  #site-url: https://charooanand.github.io/interstateAccessDesignExplainer/
+  title: "Interstate Access"
+  search: false
+  site-url: https://charooanand.github.io/interstate-access-explainer/
 
 format:
   closeread-html:
@@ -20,3 +21,5 @@ format:
       narrative-border-radius: 5px
       narrative-overlay-max-width: 30%
       narrative-outer-margin: 25%
+
+

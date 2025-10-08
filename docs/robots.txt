@@ -1,1 +1,1 @@
-Sitemap: https://charooanand.github.io/interstateAccessDesignExplainer/sitemap.xml
+Sitemap: https://charooanand.github.io/interstate-access-explainer/sitemap.xml
