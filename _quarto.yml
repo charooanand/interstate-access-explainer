@@ -6,7 +6,7 @@ website:
   title: "Interstate Access"
   search: false
   site-url: https://charooanand.github.io/interstate-access-explainer/
-  favicon: images/icon.jpg
+  favicon: images/icon.svg
 
 format:
   closeread-html:
