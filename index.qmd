@@ -1,14 +1,13 @@
 ::: {.intro-center}
 ## Interstate Access & Employment Growth: <br> Evidence from a Design-Based Instrument
 
-<br>
-
 ::::: columns
-::: {.column width="45%"}
-<br>
-The **Federal-Aid Highway Act of 1956** created the 41,000-mile Interstate system — the largest public works project in U.S. history. Like most major infrastructure projects, it came with promises of economic development.
+::: {.column width="60%"}
+The Federal-Aid Highway Act of 1956 authorized the construction of the 41,000-mile Interstate system. Since then, employment has become increasingly concentrated in counties linked to the network.
 
-I develop a new design-based instrumental variable using an overlooked planning quirk that shaped counties’ Interstate access. Leveraging this, I estimate the causal effect of Interstate access on county employment growth.
+These highways, of course, were not placed at random - they were planned to connect large cities. Therefore, this employment growth could be driven by concurrent forces of urbanization, rather than by Interstate access itself.
+
+I develop a new design-based instrumental variable using an overlooked planning quirk that shaped counties’ Interstate access. Leveraging this source of quasi-experimental variation, I estimate the causal effect of Interstate access on county employment growth.
 
 I find that, among counties that as-good-as-randomly gained Interstate access, employment only increased where agriculture was initially important.
 
@@ -18,10 +17,11 @@ I find that, among counties that as-good-as-randomly gained Interstate access, e
 
 :::
 
-::: {.column width="45%"}
-<br>
+::: {.column width="30%"}
 
-![Seattle, 1967](images/Alaskan-Way-Viaduct-Seattle-1967.jpg){style="float: right; margin-left: 5em; width:100%"}
+![Courtesy of ExxonMobil Corporation](images/esso.jpg){style="float: right; margin-left: 5em; width:90%"}
+<span style="font-size: 0.6em; display: block; text-align: right;">Courtesy of ExxonMobil Corporation</span>
+
 :::
 :::::
 :::
