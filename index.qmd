@@ -496,7 +496,9 @@ If Interstate access made high-agriculture counties grow larger, but not more in
 
 Hello - thank you for visiting this site!\
 My name is Charoo Anand and I'm a PhD candidate at Berkeley Econ, on the job market for data scientist/economist roles. \
-You can reach me at charoo_anand [at] berkeley.edu and my CV is [here](https://www.dropbox.com/scl/fi/xfwk8eqv67a47n9kp5v62/charoo_anand_cv.pdf?rlkey=yyd984ww8006ek56j88096pcp&st=gluf7jc9&dl=0).
+You can reach me at charoo_anand [at] berkeley.edu.
+
+ <!-- and my CV is [here](https://www.dropbox.com/scl/fi/xfwk8eqv67a47n9kp5v62/charoo_anand_cv.pdf?rlkey=yyd984ww8006ek56j88096pcp&st=gluf7jc9&dl=0). -->
 
 
 ```{=html}
