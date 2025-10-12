@@ -197,9 +197,8 @@ The treatment combines random variation (from the cutoff-driven coin flips) and 
 
 Therefore, the task at hand is to isolate the random component treatment variation that arises because of the cutoff rule. 
 
-Following the recentering procedure, proposed by Borusyak \& Hull (2023), I summarize the non-random variation by computing an expected treatment across networks that might as well have been built.
+To this end, the non-random treatment variation is summarized by the expected treatment across networks that might as well have been built.
 :::
-
 
 
 
