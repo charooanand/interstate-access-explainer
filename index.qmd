@@ -179,19 +179,35 @@ After seeing the populations of the red hubs, planners build this highway networ
 
 Despite the randomness, comparisons of treated and control counties remain confounded by selection. Counties near large, productive hubs - or lying on the corridors between them - benefit from those locations regardless of highways. Also, centrally located counties are always more likely to be traversed, but also gain from centrality alone. [@cr-network1]
 
-I simulate the four counterfactual networks that could have been built, given the possible connection status of the two coin-flip red hubs.  [@cr-counterfactuals]
-
-Then, to capture the non-random component of the treatment variation driven by the cutoff, I calculate counties' expected treatment across these counterfactuals. [@cr-expectedTreatment]
-
-
 ::: {#cr-blankNodes}
 ![](images/ivFigs/blankNodes.png){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
-
 :::
 
 ::: {#cr-network1}
 ![](images/ivFigs/network1.png){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
 :::
+
+::::
+
+
+::: {.info-block}
+### &#x1F527; Expected treatment captures non-random treatment variation
+
+The treatment combines random variation (from the cutoff-driven coin flips) and non-random variation (from location-advantaged counties always selecting into the treatment group). 
+
+Therefore, the task at hand is to isolate the random component treatment variation that arises because of the cutoff rule. 
+
+Following the recentering procedure, proposed by Borusyak \& Hull (2023), I summarize the non-random variation by computing an expected treatment across networks that might as well have been built.
+:::
+
+
+
+
+:::: {.cr-section layout="overlay-right"}
+To get the expected treatment, I simulate the four counterfactual networks that could have been built, given the possible connection status of the two coin-flip red hubs.  [@cr-counterfactuals]
+
+And then take counties' average treatment across the counterfactuals. [@cr-expectedTreatment]
+
 
 ::: {#cr-counterfactuals}
 ![](images/ivFigs/simulatedNetworks.gif){width="40%" style="float:left; margin-right:2em; margin-left:0;"}
@@ -205,11 +221,12 @@ Then, to capture the non-random component of the treatment variation driven by t
 ::::
 
 ::: {.info-block}
-### &#x1F527; Why does this work? 
+### &#x1F527; Recentered treatment captures random treatment variation
 
-The actual treatment combines random variation (from the cutoff-driven coin flips) and systematic variation (from planning priorities). By subtracting the expected treatment from the actual treatment, we get a 'recentered treatment' that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.
+By subtracting the expected treatment from the actual treatment, we get a 'recentered treatment' that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.
 
 Concretely, counties with a positive recentered treatment got a highway _only_ because they happened to be en route to a randomly included hub. Counties with a negative recentered treatment were missed, even though they could have been traversed in plausible counterfactual networks. That is good quasi-experimental identifying variation!
+
 :::
 
 

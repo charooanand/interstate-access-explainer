@@ -116,11 +116,11 @@ window.Quarto = {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-outer-margin: 25%;
+          --cr-section-background-color: white;
 --cr-narrative-border-radius: 5px;
 --cr-narrative-overlay-max-width: 30%;
 --cr-narrative-background-color-overlay: #fcfcfc;
---cr-section-background-color: white;
+--cr-narrative-outer-margin: 25%;
 --cr-narrative-text-color-overlay: black;
         }
       </style>
@@ -309,7 +309,7 @@ Growth in County-Level Employment
 <p>To find such a variable, I turn to the original planning documents to learn how Interstate routes were chosen. From this, I develop a model that predicts where routes were planned and isolate the component that is uncorrelated with counties’ potential outcomes.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-pan-to="0%,-30%" data-focus-on="cr-ike" data-scale-by="2">
+<div class="trigger new-trigger" data-scale-by="2" data-focus-on="cr-ike" data-pan-to="0%,-30%">
 <div class="narrative">
 <p>So, with that, let’s look more closely at the planning documents. How did planners actually decide on these routes? And was any part of that process exogenous to counties’ employment growth?</p>
 </div>
@@ -404,16 +404,6 @@ Growth in County-Level Employment
 <p>Despite the randomness, comparisons of treated and control counties remain confounded by selection. Counties near large, productive hubs - or lying on the corridors between them - benefit from those locations regardless of highways. Also, centrally located counties are always more likely to be traversed, but also gain from centrality alone.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-focus-on="cr-counterfactuals">
-<div class="narrative">
-<p>I simulate the four counterfactual networks that could have been built, given the possible connection status of the two coin-flip red hubs.</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-expectedTreatment">
-<div class="narrative">
-<p>Then, to capture the non-random component of the treatment variation driven by the cutoff, I calculate counties’ expected treatment across these counterfactuals.</p>
-</div>
-</div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
@@ -423,6 +413,31 @@ Growth in County-Level Employment
 <div id="cr-network1" class="sticky">
 <p><img src="images/ivFigs/network1.png" class="img-fluid" style="float:left; margin-right:2em; margin-left:0;;width:40.0%"></p>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="expected-treatment-captures-non-random-treatment-variation" class="level3 info-block">
+<h3 class="anchored" data-anchor-id="expected-treatment-captures-non-random-treatment-variation">🔧 Expected treatment captures non-random treatment variation</h3>
+<p>The treatment combines random variation (from the cutoff-driven coin flips) and non-random variation (from location-advantaged counties always selecting into the treatment group).</p>
+<p>Therefore, the task at hand is to isolate the random component treatment variation that arises because of the cutoff rule.</p>
+<p>Following the recentering procedure, proposed by Borusyak &amp; Hull (2023), I summarize the non-random variation by computing an expected treatment across networks that might as well have been built.</p>
+</section>
+<div class="cr-section cr-column-screen overlay-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-counterfactuals">
+<div class="narrative">
+<p>To get the expected treatment, I simulate the four counterfactual networks that could have been built, given the possible connection status of the two coin-flip red hubs.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-expectedTreatment">
+<div class="narrative">
+<p>And then take counties’ average treatment across the counterfactuals.</p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
 <div id="cr-counterfactuals" class="sticky">
 <p><img src="images/ivFigs/simulatedNetworks.gif" class="img-fluid" style="float:left; margin-right:2em; margin-left:0;;width:40.0%"></p>
 </div>
@@ -432,10 +447,9 @@ Growth in County-Level Employment
 </div>
 </div>
 </div>
-</section>
-<section id="why-does-this-work" class="level3 info-block">
-<h3 class="anchored" data-anchor-id="why-does-this-work">🔧 Why does this work?</h3>
-<p>The actual treatment combines random variation (from the cutoff-driven coin flips) and systematic variation (from planning priorities). By subtracting the expected treatment from the actual treatment, we get a ‘recentered treatment’ that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.</p>
+<section id="recentered-treatment-captures-random-treatment-variation" class="level3 info-block">
+<h3 class="anchored" data-anchor-id="recentered-treatment-captures-random-treatment-variation">🔧 Recentered treatment captures random treatment variation</h3>
+<p>By subtracting the expected treatment from the actual treatment, we get a ‘recentered treatment’ that is purged of the systematic component. Variation in the recentered treatment is driven only by the randomness of the cutoff.</p>
 <p>Concretely, counties with a positive recentered treatment got a highway <em>only</em> because they happened to be en route to a randomly included hub. Counties with a negative recentered treatment were missed, even though they could have been traversed in plausible counterfactual networks. That is good quasi-experimental identifying variation!</p>
 </section>
 <div class="columns">
