@@ -523,7 +523,7 @@ You can reach me at charoo_anand [at] berkeley.edu or on [LinkedIn](https://www.
 document.addEventListener("DOMContentLoaded", function() {
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   if (isMobile) {
-    alert("Hey there - thank you for visiting! This site works best on desktop.");
+    alert("Hey there - thank you for visiting :) This site is designed for desktop!");
   }
 });
 </script>
